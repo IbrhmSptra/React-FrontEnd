@@ -6,6 +6,7 @@ import Bookmark from "../components/Bookmark";
 import History from "../components/History";
 import Profile from "../components/Profile";
 import MenuButton from "../components/MenuButton";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -16,8 +17,12 @@ const Navbar = () => {
       </div>
       <div className="gap-x-8 hidden sm:flex">
         <div className="flex gap-x-4">
-          <Bookmark />
-          <History />
+          <Link to="/Bookmark">
+            <Bookmark />
+          </Link>
+          <Link to="/History">
+            <History />
+          </Link>
         </div>
         <Profile />
       </div>
