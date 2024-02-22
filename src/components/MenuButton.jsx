@@ -1,13 +1,32 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSidebar } from "../redux/slice/sidebarSlice";
 
 const MenuButton = () => {
+  const isSidebarOpen = useSelector((state) => state.sidebar.status);
+  const dispatch = useDispatch();
   return (
     <div className="flex gap-x-8 sm:hidden">
-      <div className="w-10 h-fit flex flex-col gap-2 p-1 items-end z-20 rounded-sm cursor-pointer">
-        <div className="bg-black w-full h-[4px] rounded-full"></div>
-        <div className="bg-black w-full h-[4px] rounded-full"></div>
-        <div className="bg-black w-full h-[4px] rounded-full"></div>
+      <div
+        className="w-10 h-8 z-20 rounded-sm cursor-pointer relative"
+        onClick={() => {
+          dispatch(toggleSidebar());
+        }}
+      >
+        <div
+          className={`bg-black h-1 w-full absolute rounded-md transition-all duration-300 ${
+            isSidebarOpen ? "top-1/2 -translate-y-1/2 rotate-45" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-black h-1 w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md transition-all duration-300 ${
+            isSidebarOpen ? "w-0" : ""
+          }`}
+        ></div>
+        <div
+          className={`bg-black h-1 w-full absolute bottom-0 rounded-md transition-all duration-300 ${
+            isSidebarOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : ""
+          }`}
+        ></div>
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
 import Logo from "../components/Logo";
 import Search from "../components/Search";
 import Bookmark from "../components/Bookmark";
