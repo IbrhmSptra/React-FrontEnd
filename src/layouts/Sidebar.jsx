@@ -9,8 +9,8 @@ const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.sidebar.status);
   return (
     <div
-      className={`w-1/2 h-screen fixed bg-primary bg-opacity-80 backdrop-blur-md top-0 right-0 transition-all duration-300 ${
-        isSidebarOpen ? "-right-0" : "-right-1/2"
+      className={`w-1/2 h-screen bg-primary bg-opacity-80 backdrop-blur-md top-0 transition-all duration-300 fixed sm:hidden ${
+        isSidebarOpen ? "right-0" : "-right-1/2"
       }`}
     >
       <div className="container px-4 py-24 text-center flex flex-col justify-between h-full">

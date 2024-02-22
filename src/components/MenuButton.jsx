@@ -18,8 +18,8 @@ const MenuButton = () => {
           }`}
         ></div>
         <div
-          className={`bg-black h-1 w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md transition-all duration-300 ${
-            isSidebarOpen ? "w-0" : ""
+          className={`bg-black h-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md transition-all duration-300 ${
+            isSidebarOpen ? "w-0" : "w-full"
           }`}
         ></div>
         <div
