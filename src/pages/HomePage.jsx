@@ -1,19 +1,16 @@
+import Carousel from "../components/Carousel";
 import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
-import { useSelector } from "react-redux";
 import Sidebar from "../layouts/Sidebar";
 
 const HomePage = () => {
-  const statusSidebar = useSelector((state) => state.sidebar.status);
   return (
     <>
       <Navbar />
       <Sidebar />
-      <div className="h-screen flex justify-center items-center">
-        <h1 className="text-5xl text-white">
-          status : {statusSidebar ? "yes" : "No"}
-        </h1>
-      </div>
+      <main className=" py-8 px-4 sm:px-8 md:px-12 xl:px-40">
+        <Carousel />
+      </main>
       <Footer />
     </>
   );
