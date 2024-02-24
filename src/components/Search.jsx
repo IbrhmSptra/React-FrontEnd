@@ -8,7 +8,7 @@ const Search = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <form className="flex relative items-center flex-1 z-20">
+      <form className="flex relative items-center flex-1">
         <FiSearch className="absolute left-2 text-grayText" />
         <input
           type="text"

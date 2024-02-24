@@ -7,7 +7,7 @@ const MenuButton = () => {
   return (
     <div className="flex gap-x-8 sm:hidden">
       <div
-        className="w-10 h-8 z-20 rounded-sm cursor-pointer relative"
+        className="w-10 h-8 rounded-sm cursor-pointer relative"
         onClick={() => {
           dispatch(toggleSidebar());
         }}

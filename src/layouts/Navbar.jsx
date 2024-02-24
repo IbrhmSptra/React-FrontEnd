@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="w-full bg-primary flex items-center justify-between px-4 py-4 gap-10 sm:px-8 md:px-12 xl:px-40 xl:py-4 xl:gap-x-40">
+    <nav className="w-full bg-primary flex items-center justify-between px-4 py-4 gap-10 fixed z-20 top-0 sm:px-8 md:px-12 xl:px-40 xl:py-4 xl:gap-x-40">
       <div className="flex flex-1 gap-x-10">
         <Logo className="w-24 h-7 hidden md:block" />
         <Search />
