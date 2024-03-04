@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage.jsx";
 import { Provider } from "react-redux";
 import Store from "./redux/store.js";
 import DetailTransaksi from "./pages/DetailTransaksi.jsx";
+import Recipepage from "./pages/Recipepage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
   {
     path: "/DetailTransaksi",
     element: <DetailTransaksi />,
+  },
+
+  {
+    path: "/Recipepage",
+    element: <Recipepage />,
   },
 ]);
 
