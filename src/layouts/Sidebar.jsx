@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const isSidebarOpen = useSelector((state) => state.sidebar.status);
+  const isSidebarOpen = useSelector((state) => state.webcontent.sidebar);
+
   return (
     <div
       className={`w-1/2 h-screen bg-primary bg-opacity-80 backdrop-blur-md top-0 transition-all duration-300 z-10 fixed sm:hidden ${

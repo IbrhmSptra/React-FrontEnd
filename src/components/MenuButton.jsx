@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSidebar } from "../redux/slice/sidebarSlice";
+import { toggleSidebar } from "../redux/slice/webContent";
 
 const MenuButton = () => {
-  const isSidebarOpen = useSelector((state) => state.sidebar.status);
+  const isSidebarOpen = useSelector((state) => state.webcontent.sidebar);
   const dispatch = useDispatch();
   return (
     <div className="flex gap-x-8 sm:hidden">
