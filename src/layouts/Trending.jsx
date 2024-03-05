@@ -11,7 +11,7 @@ import ArrowButton from "../components/ArrowButton";
 const Trending = () => {
   return (
     <div className="mt-8">
-      <h1 className="font-medium text-lg xl:text-xl">Kategori</h1>
+      <h1 className="font-medium text-lg xl:text-xl">Trending</h1>
       <div className="mt-2 relative">
         <Swiper
           navigation={true}
