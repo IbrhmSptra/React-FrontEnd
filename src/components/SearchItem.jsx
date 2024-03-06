@@ -9,15 +9,15 @@ const SearchItem = ({ data }) => {
           className="flex gap-x-6 items-center"
         >
           <img
-            className="w-1/2 object-cover max-h-32"
-            src="https://qqnkeeuttacyfctgebzc.supabase.co/storage/v1/object/public/kategori/allfood/img/jjajangmyeon.png"
+            className="w-1/2 object-cover max-h-32 min-w-32"
+            src={`${data.web_img}`}
             alt="Poster-Movies"
           />
           <div className="w-full space-y-0.5 ">
             <h1 className="text-base md:text-lg font-semibold">
-              {data.category}
+              {data.kategori.kategori}
             </h1>
-            <p className="text-sm">{data.name}</p>
+            <p className="text-sm">{data.food}</p>
           </div>
         </Link>
       </div>

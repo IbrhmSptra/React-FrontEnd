@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
 /* eslint-disable no-unused-vars */
 import React, { forwardRef, useEffect, useState } from "react";
@@ -10,9 +11,11 @@ import {
 } from "../redux/slice/webContent";
 import SearchItem from "./SearchItem";
 import useAnotherCompClicked from "../hooks/useAnotherCompClicked";
+import { searchFood } from "../services/supabase.service";
 
 const Search = forwardRef((props, ref) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const dispatch = useDispatch();
   const searchExpand = useSelector((state) => state.webcontent.searchExpand);
   const value = {
@@ -27,7 +30,24 @@ const Search = forwardRef((props, ref) => {
   });
 
   useEffect(() => {
-    console.log(searchQuery);
+    if (searchQuery !== "") {
+      const delay = setTimeout(() => {
+        searchFood((data) => {
+          setSearchResult(data);
+        }, searchQuery);
+      }, 500);
+      return () => {
+        clearTimeout(delay);
+      };
+    } else {
+      const delay = setTimeout(() => {
+        dispatch(closeSearchExpand());
+        setSearchResult([]);
+      }, 500);
+      return () => {
+        clearTimeout(delay);
+      };
+    }
   }, [searchQuery]);
 
   return (
@@ -50,14 +70,14 @@ const Search = forwardRef((props, ref) => {
             value={searchQuery}
           />
         </div>
-        {searchExpand && (
+        {searchExpand && searchResult.length > 0 && (
           <div
             className="w-full bg-card border-2 border-primary rounded-xl divide-y divide-y-grayText bg-white"
             ref={ref}
           >
-            <SearchItem data={value} />
-            <SearchItem data={value} />
-            <SearchItem data={value} />
+            {searchResult.slice(0, 3).map((value, i) => (
+              <SearchItem data={value} key={i} />
+            ))}
           </div>
         )}
       </div>
