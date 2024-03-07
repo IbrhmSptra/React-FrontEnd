@@ -22,7 +22,7 @@ const Navbar = forwardRef((props, ref) => {
           <Link to="/favoritepage">
             <Bookmark />
           </Link>
-          <Link to="/History">
+          <Link to="/riwayatpage">
             <History />
           </Link>
         </div>

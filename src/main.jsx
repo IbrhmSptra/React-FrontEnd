@@ -9,6 +9,7 @@ import DetailTransaksi from "./pages/DetailTransaksi.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
 
 import Authentication from "./pages/Authenthication.jsx";
+import RiwayatPage from "./pages/RiwayatPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,15 +21,19 @@ const router = createBrowserRouter([
     path: "/detailtransaksi",
     element: <DetailTransaksi />,
   },
-  
+
   {
     path: "/favoritepage",
     element: <FavoritePage />,
   },
 
   {
-    path : "/Authentication",
-    element : <Authentication/>,
+    path: "/Authentication",
+    element: <Authentication />,
+  },
+  {
+    path: "/riwayatpage",
+    element: <RiwayatPage />,
   },
 ]);
 
