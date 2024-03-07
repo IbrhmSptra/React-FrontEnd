@@ -6,7 +6,7 @@ import RecipeDescription from "../components/RecipeDescription";
 import RecipeIngridients from "../components/RecipeIngridients";
 import CookingMethod from "../components/CookingMethode";
 import IngridientsButtonOrder from "../components/IngridientsButtonOrder";
-import StarRating from "../components/StarRating";
+import RatingFood from "../components/RatingFood";
 
 
 const Recipepage = () => {
@@ -18,7 +18,7 @@ const Recipepage = () => {
         <RecipePageCard src={pempek}/>
     <div>
         <RecipeDescription namamenu={"Pempek"} shortdescription={" Pempek kapal selam adalah jenis pempek yang menyerupai kantung dengan isian telur di dalamnya."}/>
-    <StarRating />
+    <RatingFood />
     <IngridientsButtonOrder />
     </div>
      </div>
