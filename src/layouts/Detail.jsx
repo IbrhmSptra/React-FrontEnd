@@ -5,15 +5,18 @@ import Menu from "../components/Menu";
 const Detail = () => {
   return (
     <>
-      <main className=" py-8 flex space-x-4 sm:px-8 md:px-12">
-        <div className="w-2/5 bg-white shadow-md rounded-xl">
-        <Menu />
-        <Detail1 />
-        </div>
-        <div className="w-2/5 bg-white shadow-md rounded-xl">
-        <Detail2 />
-        </div>
-      </main>
+      <div className="relative mb-20">
+      <p class="font-semibold text-3xl ml-40 mt-20">Detail Transaksi</p>
+        <div className="flex place-content-center mr-40">
+          <div className="w-full bg-white shadow-md rounded-xl mr-4 ml-40 mt-16">
+          <Menu />
+          <Detail1 />
+          </div>
+          <div className="w-full bg-white shadow-md rounded-xl mr-4 ml-40 mt-16 px-4 py-4">
+          <Detail2 />
+          </div>
+        </div>        
+      </div>
     </>
   );
 };
