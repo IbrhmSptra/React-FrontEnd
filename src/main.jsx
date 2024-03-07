@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage.jsx";
 import { Provider } from "react-redux";
 import Store from "./redux/store.js";
 import DetailTransaksi from "./pages/DetailTransaksi.jsx";
+import FavoritePage from "./pages/FavoritePage.jsx";
+
 import Authentication from "./pages/Authenthication.jsx";
 
 const router = createBrowserRouter([
@@ -17,6 +19,11 @@ const router = createBrowserRouter([
   {
     path: "/DetailTransaksi",
     element: <DetailTransaksi />,
+  },
+  
+  {
+    path: "/favoritepage",
+    element: <FavoritePage />,
   },
 
   {
