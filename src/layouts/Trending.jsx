@@ -1,17 +1,23 @@
 import CardFood from "../components/CardFood";
-import frenchtoast from "../assets/img/Food/frenchtoast.png";
-import rendang from "../assets/img/Food/rendang.png";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import { Navigation } from "swiper/modules";
 import ArrowButton from "../components/ArrowButton";
+import { useEffect, useState } from "react";
+import { getTrending } from "../services/supabase.service";
 
 const Trending = () => {
+  const [trending, setTrending] = useState([]);
+  useEffect(() => {
+    getTrending((data) => {
+      setTrending(data);
+    });
+  }, []);
   return (
     <div className="mt-8">
-      <h1 className="font-medium text-lg xl:text-xl">Kategori</h1>
+      <h1 className="font-medium text-lg xl:text-xl">Trending</h1>
       <div className="mt-2 relative">
         <Swiper
           navigation={true}
@@ -25,30 +31,11 @@ const Trending = () => {
           }}
         >
           <ArrowButton direction="left" />
-          <SwiperSlide>
-            <CardFood src={frenchtoast} nama="French Toast" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardFood src={rendang} nama="Rendang" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardFood src={frenchtoast} nama="French Toast" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardFood src={rendang} nama="Rendang" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardFood src={frenchtoast} nama="French Toast" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardFood src={rendang} nama="Rendang" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardFood src={frenchtoast} nama="French Toast" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardFood src={rendang} nama="Rendang" />
-          </SwiperSlide>
+          {trending.map((value, i) => (
+            <SwiperSlide key={i}>
+              <CardFood data={value} />
+            </SwiperSlide>
+          ))}
           <ArrowButton direction="right" />
         </Swiper>
       </div>

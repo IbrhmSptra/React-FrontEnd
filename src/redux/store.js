@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sidebarReducer from "./slice/sidebarSlice";
+import webContent from "./slice/webContent";
 
 const store = configureStore({
   reducer: {
-    sidebar: sidebarReducer,
+    webcontent: webContent,
   },
 });
 
