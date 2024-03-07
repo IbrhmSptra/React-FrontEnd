@@ -8,6 +8,7 @@ import Profile from "../components/Profile";
 import MenuButton from "../components/MenuButton";
 import { Link } from "react-router-dom";
 import { forwardRef } from "react";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const Navbar = forwardRef((props, ref) => {
   return (
@@ -16,9 +17,9 @@ const Navbar = forwardRef((props, ref) => {
         <Logo className="w-24 h-7 hidden md:block" />
         <Search ref={ref} />
       </div>
-      <div className="gap-x-8 hidden sm:flex">
+      <div className="gap-x-6 hidden sm:flex">
         <div className="flex gap-x-4">
-          <Link to="/Bookmark">
+          <Link to="/favoritepage">
             <Bookmark />
           </Link>
           <Link to="/History">
@@ -26,6 +27,9 @@ const Navbar = forwardRef((props, ref) => {
           </Link>
         </div>
         <Profile />
+        <Link to="/login">
+          <AiOutlineLogout className="text-tertiary text-2xl" />
+        </Link>
       </div>
       <MenuButton />
     </nav>

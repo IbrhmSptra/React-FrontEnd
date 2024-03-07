@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import arrow from "../assets/img/Filter/right-arrow-svgrepo-com.png";
 
-const Filter = () => {
-  const [selectedFilter, setSelectedFilter] = useState("Harga Terendah");
+const Filter = ({ filter }) => {
+  const [selectedFilter, setSelectedFilter] = useState(filter[0]);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    console.log(selectedFilter);
+  }, [selectedFilter]);
 
   const handleFilterChange = (filter) => {
     setSelectedFilter(filter);
@@ -28,18 +32,15 @@ const Filter = () => {
           </p>
           {isOpen && (
             <div className="absolute top-full left-0 mt-2 w-[240px] sm:w-[338px] bg-white rounded-[15px] border border-yellow-400 z-9">
-              <p
-                className="p-2 hover:bg-gray-100 cursor-pointer rounded-[15px]"
-                onClick={() => handleFilterChange("Harga Terendah")}
-              >
-                Harga Terendah
-              </p>
-              <p
-                className="p-2 hover:bg-gray-100 cursor-pointer rounded-[15px]"
-                onClick={() => handleFilterChange("Harga Tertinggi")}
-              >
-                Harga Tertinggi
-              </p>
+              {filter.map((value, i) => (
+                <p
+                  className="p-2 hover:bg-gray-100 cursor-pointer rounded-[15px]"
+                  onClick={() => handleFilterChange(value)}
+                  key={i}
+                >
+                  {value}
+                </p>
+              ))}
             </div>
           )}
         </div>

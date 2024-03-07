@@ -2,9 +2,20 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import logo from "../assets/img/Logo.png";
+import { useNavigate } from "react-router-dom";
 
-const brand = ({ className }) => {
-  return <img className={className} src={logo} alt="" />;
+const Brand = ({ className }) => {
+  const navigate = useNavigate();
+  return (
+    <img
+      className={`cursor-pointer ${className}`}
+      src={logo}
+      alt=""
+      onClick={() => {
+        navigate("/");
+      }}
+    />
+  );
 };
 
-export default brand;
+export default Brand;

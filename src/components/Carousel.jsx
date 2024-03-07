@@ -1,7 +1,7 @@
-import iklan1 from "../assets/img/iklan-1.png";
-import iklan2 from "../assets/img/iklan-2.png";
-import iklan3 from "../assets/img/iklan-3.png";
-import iklan4 from "../assets/img/iklan-4.png";
+import iklan1 from "../assets/img/Promo/iklan-1.png";
+import iklan2 from "../assets/img/Promo/iklan-2.png";
+import iklan3 from "../assets/img/Promo/iklan-3.png";
+import iklan4 from "../assets/img/Promo/iklan-4.png";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
