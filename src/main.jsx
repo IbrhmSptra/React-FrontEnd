@@ -8,6 +8,8 @@ import Store from "./redux/store.js";
 import DetailTransaksi from "./pages/DetailTransaksi.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
 
+import Authentication from "./pages/Authenthication.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,9 +20,15 @@ const router = createBrowserRouter([
     path: "/detailtransaksi",
     element: <DetailTransaksi />,
   },
+  
   {
     path: "/favoritepage",
     element: <FavoritePage />,
+  },
+
+  {
+    path : "/Authentication",
+    element : <Authentication/>,
   },
 ]);
 
