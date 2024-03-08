@@ -3,7 +3,6 @@ import DetailPemesananPertama from "../components/DetailPemesananPertama";
 import RingkasanTransaksi from "../components/RingkasanTransaksi";
 import ButtonPemesanan from "../components/ButtonPemesanan";
 
-/////////Blom responsive kayany detail pemesanan
 const DetailPemesanan = () => {
   return (
     <div className="relative mb-20">

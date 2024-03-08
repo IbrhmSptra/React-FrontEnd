@@ -1,4 +1,3 @@
-import React from "react";
 import { FaStar } from "react-icons/fa";
 
 const RatingFood = () => {
@@ -9,8 +8,8 @@ const RatingFood = () => {
       <FaStar size={40} color="#ffc107" />
       <FaStar size={40} color="#e4e5e9" />
       <FaStar size={40} color="#e4e5e9" />
-      <p className="ml-2 pt-1 flex items-center">( 20 )</p>    
-  </div>
+      <p className="ml-2 pt-1 flex items-center">( 20 )</p>
+    </div>
   );
 };
 
