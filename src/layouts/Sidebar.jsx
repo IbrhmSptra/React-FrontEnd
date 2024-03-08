@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`w-1/2 h-screen bg-primary bg-opacity-80 backdrop-blur-md top-0 transition-all duration-300 z-10 fixed sm:hidden ${
+      className={`w-1/2 h-screen bg-primary bg-opacity-80 backdrop-blur-md top-0 transition-all duration-300 z-20 fixed sm:hidden ${
         isSidebarOpen ? "right-0" : "-right-1/2"
       }`}
     >

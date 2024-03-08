@@ -5,7 +5,7 @@ const SearchItem = ({ data }) => {
     <>
       <div className="p-4 text-headline" onClick={() => {}}>
         <Link
-          to={`/detailresep/${data.id}`}
+          to={`/recipepage/${data.id}`}
           className="flex gap-x-6 items-center"
         >
           <img

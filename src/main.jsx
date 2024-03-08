@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     element: <FavoritePage />,
   },
   {
-    path: "/KategoriPage",
+    path: "/kategoripage/:id",
     element: <KategoriPage />,
   },
   {

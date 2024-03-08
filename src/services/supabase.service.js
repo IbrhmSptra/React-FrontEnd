@@ -10,8 +10,27 @@ export async function getKategori(callback) {
   try {
     const { data: kategori, error } = await supabase
       .from("kategori")
-      .select("id_kategori,kategori,web_img");
+      .select("id_kategori,kategori,web_img,web_header_img");
     callback(kategori);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//ini ubah
+export async function getFoodbyKategori(callback, id) {
+  let data = {};
+  try {
+    const { data: kategori } = await supabase
+      .from("kategori")
+      .select("kategori,web_header_img")
+      .eq("id_kategori", id);
+    const { data: allfood } = await supabase
+      .from("allfood")
+      .select("id,food,web_img,harga")
+      .eq("kategori", id);
+    data = { kategori: kategori[0], food: allfood };
+    callback(data);
   } catch (error) {
     console.log(error);
   }

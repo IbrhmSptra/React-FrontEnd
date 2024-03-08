@@ -1,19 +1,18 @@
 import { useState } from "react";
-import banner from "../assets/img/Card/fishandchips.png";
 import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-const Banner = ({ data }) => {
+const Card = ({ data }) => {
   const [bookmarked, setBookmarked] = useState(false);
   return (
     <Link
       to={`/recipepage/${data.id}`}
       className="border shadow-xl relative select-none"
     >
-      <img className="w-full max-h-52" src={banner} />
+      <img className="w-full max-h-36 object-cover" src={data.web_img} />
       <div className="p-4 space-y-2">
-        <p className="text-sm text-headline font-medium">Fish & Chips</p>
+        <p className="text-sm text-headline font-medium">{data.food}</p>
         <div className="flex justify-between">
           <div className="flex">
             <FaStar color="#feda15" />
@@ -22,7 +21,13 @@ const Banner = ({ data }) => {
             <FaStar color="#feda15" />
             <FaStar color="#feda15" />
           </div>
-          <p className="text-tertiary text-xs font-semibold">Rp50.000</p>
+          <p className="text-tertiary text-xs font-semibold">
+            Rp
+            {data.harga.toLocaleString("id-ID", {
+              styles: "currency",
+              currency: "IDR",
+            })}
+          </p>
         </div>
       </div>
       <div
@@ -37,4 +42,4 @@ const Banner = ({ data }) => {
   );
 };
 
-export default Banner;
+export default Card;
