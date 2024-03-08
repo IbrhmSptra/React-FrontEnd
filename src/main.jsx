@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import Store from "./redux/store.js";
 import DetailTransaksi from "./pages/DetailTransaksi.jsx";
 import Recipepage from "./pages/Recipepage.jsx";
+import FavoritePage from "./pages/FavoritePage.jsx";
+import KatagoriPage from "./pages/KatagoriPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
   {
     path: "/Recipepage",
     element: <Recipepage />,
+  },
+  {
+    path: "/FavoritePage",
+    element: <FavoritePage />,
+  },
+  {
+    path: "/KatagoriPage",
+    element: <KatagoriPage />,
   },
 ]);
 
