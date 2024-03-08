@@ -1,15 +1,12 @@
-import React from 'react'
-import ImgPesanan from '../assets/img/Pesanan.png'
+import { GoPackageDependents } from "react-icons/go";
 
 const ButtonPemesanan = () => {
   return (
-        <div className="inline-flex mt-12 items-center justify-center p-2 w-44 bg-primary rounded-lg sm:mx-auto">
-          <a href="#" className="font-bold">
-              Pesan Bahan
-          </a>
-          <img src={ImgPesanan} alt="shoppingcart" />        
-        </div>
-  )
-}
+    <div className="bg-primary w-full flex py-2 justify-evenly items-center max-w-48 font-poppins rounded-xl">
+      <p>Pesan Bahan</p>
+      <GoPackageDependents size={20} />
+    </div>
+  );
+};
 
-export default ButtonPemesanan
+export default ButtonPemesanan;

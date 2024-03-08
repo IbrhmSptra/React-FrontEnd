@@ -1,29 +1,37 @@
-const Detail1 = () =>{
-    return (
-        <>
-            <div className="mt-5 text-center font-bold text-xl">Rawon Daging Sapi</div>
-            <div className="flex space-x-4 my-4 ml-4 font-poppins">
-                <div>
-                    <div>Total Bahan</div>
-                    <div>Total Harga</div>
-                    <div>Pembayaran</div>
-                    <div>Alamat</div>
-                </div>
-                <div>
-                    <div>:</div>
-                    <div>:</div>
-                    <div>:</div>
-                    <div>:</div>
-                </div>
-                <div>
-                    <div>19</div>
-                    <div>Rp100.000</div>
-                    <div>COD (Cash On Delivery)</div>
-                    <div>Jl. Gatot Subroto No.Kav.88, RT.1/RW.9, Kuningan Bar., Kec. Mampang Prpt., Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 12899</div>
-                </div>
-            </div>
-        </>
-    )
+const Detail1 = () => {
+  return (
+    <>
+      <div className="py-4 px-6">
+        <h1 className=" text-center font-bold text-xl mb-4">
+          Rawon Daging Sapi
+        </h1>
+        <div className="flex gap-x-4 font-poppins text-sm">
+          <div>
+            <h3>Total Bahan</h3>
+            <h3>Total Harga</h3>
+            <h3>Pembayaran</h3>
+            <h3>Alamat</h3>
+          </div>
+          <div>
+            <div>:</div>
+            <div>:</div>
+            <div>:</div>
+            <div>:</div>
+          </div>
+          <div>
+            <p>19</p>
+            <p>Rp100.000</p>
+            <p>COD (Cash On Delivery)</p>
+            <p>
+              Jl. Gatot Subroto No.Kav.88, RT.1/RW.9, Kuningan Bar., Kec.
+              Mampang Prpt., Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta
+              12899
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Detail1;

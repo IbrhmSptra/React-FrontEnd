@@ -8,6 +8,8 @@ import Store from "./redux/store.js";
 import DetailTransaksi from "./pages/DetailTransaksi.jsx";
 import Recipepage from "./pages/Recipepage.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
+import KategoriPage from "./pages/KategoriPage.jsx";
+import DetailPemesanan from "./pages/DetailPemesanan.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,18 @@ const router = createBrowserRouter([
   {
     path: "/Recipepage",
     element: <Recipepage />,
+  },
+  {
+    path: "/FavoritePage",
+    element: <FavoritePage />,
+  },
+  {
+    path: "/KategoriPage",
+    element: <KategoriPage />,
+  },
+  {
+    path: "/detailpemesanan",
+    element: <DetailPemesanan />,
   },
 ]);
 
