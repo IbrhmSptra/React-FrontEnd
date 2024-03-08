@@ -7,11 +7,15 @@ import RecipeIngridients from "../components/RecipeIngridients";
 import CookingMethod from "../components/CookingMethode";
 import IngridientsButtonOrder from "../components/IngridientsButtonOrder";
 import RatingFood from "../components/RatingFood";
+import Sidebar from "../layouts/Sidebar";
+import { useRef } from "react";
 
 const Recipepage = () => {
+  const RecipeSearch = useRef(null);
   return (
     <>
-      <Navbar />
+      <Navbar ref={RecipeSearch} />
+      <Sidebar />
       <section className="font-poppins pb-8 pt-24 px-4 sm:px-8 md:px-12 xl:px-40">
         <div className="sm:flex gap-x-4">
           <RecipePageCard src={pempek} />
