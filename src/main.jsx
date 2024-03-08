@@ -30,10 +30,6 @@ const router = createBrowserRouter([
     element: <Recipepage />,
   },
   {
-    path: "/FavoritePage",
-    element: <FavoritePage />,
-  },
-  {
     path: "/KategoriPage",
     element: <KategoriPage />,
   },
