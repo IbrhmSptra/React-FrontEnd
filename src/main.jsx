@@ -6,10 +6,11 @@ import HomePage from "./pages/HomePage.jsx";
 import { Provider } from "react-redux";
 import Store from "./redux/store.js";
 import DetailTransaksi from "./pages/DetailTransaksi.jsx";
+import Recipepage from "./pages/Recipepage.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
-
 import Authentication from "./pages/Authenthication.jsx";
 import RiwayatPage from "./pages/RiwayatPage.jsx";
+import KatagoriPage from "./pages/KatagoriPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,18 @@ const router = createBrowserRouter([
   {
     path: "/riwayatpage",
     element: <RiwayatPage />,
+  },
+  {
+    path: "/Recipepage",
+    element: <Recipepage />,
+  },
+  {
+    path: "/FavoritePage",
+    element: <FavoritePage />,
+  },
+  {
+    path: "/KatagoriPage",
+    element: <KatagoriPage />,
   },
 ]);
 
