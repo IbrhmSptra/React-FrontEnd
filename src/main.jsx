@@ -21,14 +21,13 @@ const router = createBrowserRouter([
     path: "/detailtransaksi",
     element: <DetailTransaksi />,
   },
-
+  {
+    path: "/favoritepage",
+    element: <FavoritePage />,
+  },
   {
     path: "/Recipepage",
     element: <Recipepage />,
-  },
-  {
-    path: "/FavoritePage",
-    element: <FavoritePage />,
   },
   {
     path: "/KategoriPage",
