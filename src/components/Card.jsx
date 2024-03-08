@@ -2,11 +2,15 @@ import { useState } from "react";
 import banner from "../assets/img/Card/fishandchips.png";
 import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
-const Banner = () => {
+const Banner = ({ data }) => {
   const [bookmarked, setBookmarked] = useState(false);
   return (
-    <div className="border shadow-xl relative select-none">
+    <Link
+      to={`/recipepage/${data.id}`}
+      className="border shadow-xl relative select-none"
+    >
       <img className="w-full max-h-52" src={banner} />
       <div className="p-4 space-y-2">
         <p className="text-sm text-headline font-medium">Fish & Chips</p>
@@ -29,7 +33,7 @@ const Banner = () => {
       >
         <FaHeart color={bookmarked ? "#feda15" : "#6F6F6F"} />
       </div>
-    </div>
+    </Link>
   );
 };
 

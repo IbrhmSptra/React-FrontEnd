@@ -4,7 +4,11 @@
 const RecipePageCard = ({ src, addStyle }) => {
   return (
     <div className={`sm:w-1/2  ${addStyle}`}>
-      <img className="h-full w-full object-cover" alt="imgFood" src={src} />
+      <img
+        className="h-full w-full max-h-96 object-cover rounded-lg"
+        alt="imgFood"
+        src={src}
+      />
     </div>
   );
 };

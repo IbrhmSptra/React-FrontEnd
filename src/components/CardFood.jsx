@@ -5,7 +5,7 @@ const CardFood = ({ data, addStyle }) => {
   if (data) {
     return (
       <div className={`border shadow-xl ${addStyle}`}>
-        <Link to={`/detailresep/${data.id}`}>
+        <Link to={`/recipepage/${data.id}`}>
           <img
             className="h-32 w-full object-cover"
             src={data.web_img}

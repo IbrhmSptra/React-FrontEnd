@@ -17,6 +17,28 @@ export async function getKategori(callback) {
   }
 }
 
+export async function getDetailRecipe(callback, id) {
+  let data = {};
+  try {
+    const { data: allfood } = await supabase
+      .from("allfood")
+      .select("id,food,web_img,description")
+      .eq("id", id);
+    const { data: bahandetail } = await supabase
+      .from("bahandetail")
+      .select("angka,bahan,harga")
+      .eq("idfood", id);
+    const { data: marimasak } = await supabase
+      .from("marimasak")
+      .select("cara")
+      .eq("idfood", id);
+    data = { data: allfood[0], recipe: bahandetail, step: marimasak };
+    callback(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function searchFood(callback, query) {
   try {
     let { data: allfood, error } = await supabase
