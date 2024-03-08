@@ -3,7 +3,9 @@ import Navbar from "../layouts/Navbar";
 import Sidebar from "../layouts/Sidebar";
 import Filter from "../components/Filter";
 import Banner from "../components/Banner";
+import CardFood from "../components/CardFood";
 import { useRef } from "react";
+import { data } from "autoprefixer";
 
 const FavoritePage = () => {
   const favoriteSearch = useRef(null);
@@ -21,6 +23,7 @@ const FavoritePage = () => {
             "Pesanan Terbanyak",
           ]}
         />
+        <CardFood data={data} />
       </main>
       <Footer />
     </div>
