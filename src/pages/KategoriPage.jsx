@@ -2,7 +2,7 @@ import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
 import Sidebar from "../layouts/Sidebar";
 import Filter from "../components/Filter";
-import CardKatagori from "../components/CardKatagori";
+import Card from "../components/Card";
 import { useRef } from "react";
 import Banner from "../components/Banner";
 
@@ -27,18 +27,18 @@ const KategoriPage = () => {
           ]}
         />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
-          <CardKatagori />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </div>
       </main>
       <Footer />
