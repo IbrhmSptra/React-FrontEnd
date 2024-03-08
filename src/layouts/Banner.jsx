@@ -1,7 +1,8 @@
 import ChangeAuth from "../components/ChangeAuth";
 import Logo from "../assets/img/Logo.png";
 import Background from "../components/Background";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleAuth } from "../redux/slice/authPage";
 
 const Banner = (props) => {
   let {
@@ -10,7 +11,8 @@ const Banner = (props) => {
     info = "Masuk Di Sini",
   } = props;
 
-  const [slide, setSlide] = useState(false);
+  const slide = useSelector((state) => state.authpage.authChange);
+  const dispatch = useDispatch();
 
   if (slide == true) {
     position = "right-[50%]";
@@ -24,7 +26,7 @@ const Banner = (props) => {
       <Background className="flex-col h-full w-full justify-center gap-y-48 items-center md:flex hidden">
         <img className="h-[78px] opacity-100 w-[278px]" src={Logo} alt="logo" />
         <ChangeAuth
-          onClick={() => setSlide(!slide)}
+          onClick={() => dispatch(toggleAuth())}
           quetion={quetion}
           info={info}
           className="flex-col"

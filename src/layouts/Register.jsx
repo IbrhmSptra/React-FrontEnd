@@ -2,7 +2,9 @@ import FillData from "../components/FillData";
 import AuthButton from "../components/AuthButton";
 import ChangeAuth from "../components/ChangeAuth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { InsertCredentials, SignUp } from "../services/supabase.auth.service";
+import { useDispatch, useSelector } from "react-redux";
+import { setError, toggleAuth } from "../redux/slice/authPage";
 
 function Register(props) {
   let { bottom = "z-1" } = props;
@@ -20,23 +22,40 @@ function Register(props) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [consfirmPassword, setConsfirmPassword] = useState("");
-
-  let data = localStorage.getItem(email);
-  const navigate = useNavigate();
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const error = useSelector((state) => state.authpage.error);
+  const dispatch = useDispatch();
 
   const handleRegister = () => {
-    if (!email.match("@", ".com") || email == null) {
-      alert("Email invalid");
-    } else if (password.length < 6) {
-      alert("Password Minimal 6 Karakter");
-    } else if (password !== consfirmPassword) {
-      alert("Password Tidak Sama");
-    } else if (data !== null) {
-      alert("Email Sudah Digunakan");
+    if (
+      email == "" ||
+      username == "" ||
+      password == "" ||
+      confirmPassword == ""
+    ) {
+      dispatch(setError("Lengkapi input terlebih dahulu"));
+    } else if (username.length > 8) {
+      dispatch(setError("Username maksimal 8 huruf"));
+    } else if (password !== confirmPassword) {
+      dispatch(setError("Password Tidak Sama"));
     } else {
-      localStorage.setItem(email, password);
-      navigate("/");
+      const data = { email: email, password: password };
+      //sign up auth supabase
+      SignUp((data, error) => {
+        // kalau eror
+        if (error) {
+          dispatch(setError(error));
+        } else {
+          //insert credentials user into table akun
+          InsertCredentials(data.user.id, username, email);
+          //clear the state
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          dispatch(toggleAuth());
+        }
+      }, data);
     }
   };
 
@@ -45,7 +64,7 @@ function Register(props) {
       className={` bg-white gap-5 w-full h-full ${bottom} items-center justify-center flex flex-col p-5 absolute md:relative md:w-6/12 md:p-16 md:z-0`}
     >
       <FillData
-        Type="username"
+        Type="text"
         Placeholder="Masukan Username"
         Id="regisUsername"
         Label="Username"
@@ -77,10 +96,14 @@ function Register(props) {
         Id="consfirmPassword"
         Label="Confirm Password"
         Name="confirmPassword"
-        value={consfirmPassword}
-        onChange={(e) => setConsfirmPassword(e.target.value)}
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <AuthButton onClick={handleRegister}>SIGNUP</AuthButton>
+      {error && (
+        <p className="text-center text-sm font-light text-tertiary">{error}</p>
+      )}
+
       <ChangeAuth
         onClick={changePosition}
         quetion="Sudah punya akun?"

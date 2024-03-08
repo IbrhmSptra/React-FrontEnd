@@ -2,8 +2,11 @@
 import FillData from "../components/FillData";
 import AuthButton from "../components/AuthButton";
 import ChangeAuth from "../components/ChangeAuth";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { SignIn } from "../services/supabase.auth.service";
+import { useDispatch, useSelector } from "react-redux";
+import { setError } from "../redux/slice/authPage";
+import { useNavigate } from "react-router-dom";
 
 function Login(props) {
   let { top = "z-1" } = props;
@@ -19,21 +22,24 @@ function Login(props) {
     top = "z-1";
   }
 
-  const [goto, setGoto] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let user = localStorage.getItem(email);
-
-  useEffect(() => {
-    if (user == password) {
-      setGoto("/");
-    }
-  }, [password]);
+  const error = useSelector((state) => state.authpage.error);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (user != password) {
-      alert("Email atau Password tidak sesuai");
-    }
+    const credentials = {
+      email: email,
+      password: password,
+    };
+    SignIn((res, error) => {
+      if (error) {
+        dispatch(setError(error));
+      } else {
+        navigate("/");
+      }
+    }, credentials);
   };
 
   return (
@@ -72,9 +78,14 @@ function Login(props) {
           Ingat Saya
         </label>
       </div>
-      <Link to={goto} className="w-full">
-        <AuthButton onClick={handleLogin}>SignIn</AuthButton>
-      </Link>
+      {error && (
+        <p className="w-full text-center text-sm font-light text-tertiary">
+          {error}
+        </p>
+      )}
+
+      <AuthButton onClick={handleLogin}>SignIn</AuthButton>
+
       <div className="flex w-full justify-center gap-1 font-poppins">
         <p className="font-light text-sm">Lupa Password?</p>
         <a

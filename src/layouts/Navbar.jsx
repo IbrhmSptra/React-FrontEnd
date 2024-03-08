@@ -6,11 +6,17 @@ import Bookmark from "../components/Bookmark";
 import History from "../components/History";
 import Profile from "../components/Profile";
 import MenuButton from "../components/MenuButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { forwardRef } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
+import { SignOut } from "../services/supabase.auth.service";
 
 const Navbar = forwardRef((props, ref) => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    SignOut();
+    navigate("/authpage");
+  };
   return (
     <nav className="font-poppins w-full bg-primary flex items-start justify-between px-4 py-4 gap-10 fixed z-30 top-0 max-h-16 sm:px-8 md:px-12 xl:px-40 xl:py-4 xl:gap-x-40">
       <div className="flex flex-1 gap-x-10">
@@ -27,9 +33,9 @@ const Navbar = forwardRef((props, ref) => {
           </Link>
         </div>
         <Profile />
-        <Link to="/login">
-          <AiOutlineLogout className="text-tertiary text-2xl" />
-        </Link>
+        <div onClick={handleLogout}>
+          <AiOutlineLogout className="text-tertiary text-2xl cursor-pointer" />
+        </div>
       </div>
       <MenuButton />
     </nav>

@@ -10,18 +10,25 @@ import Recipepage from "./pages/Recipepage.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
 import KategoriPage from "./pages/KategoriPage.jsx";
 import DetailPemesanan from "./pages/DetailPemesanan.jsx";
+import Authentication from "./pages/Authenthication.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
   },
-
+  {
+    path: "/authpage",
+    element: <Authentication />,
+  },
   {
     path: "/detailtransaksi",
     element: <DetailTransaksi />,
   },
-
+  {
+    path: "/favoritepage",
+    element: <FavoritePage />,
+  },
   {
     path: "/recipepage/:id",
     element: <Recipepage />,
