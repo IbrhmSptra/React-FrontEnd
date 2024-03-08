@@ -25,7 +25,7 @@ const Banner = () => {
         onClick={() => {
           setBookmarked(!bookmarked);
         }}
-        className="w-7 h-7 bg-white rounded-full flex items-center justify-center border absolute top-4 right-2 cursor-pointer"
+        className="w-7 h-7 bg-white rounded-full flex items-center justify-center border absolute top-2 right-2 cursor-pointer"
       >
         <FaHeart color={bookmarked ? "#feda15" : "#6F6F6F"} />
       </div>

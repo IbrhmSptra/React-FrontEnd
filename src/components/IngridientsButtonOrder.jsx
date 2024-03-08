@@ -1,22 +1,17 @@
 import { Link } from "react-router-dom";
-import iconcart from "../assets/img/cart-icon.png"
+import { IoCartOutline } from "react-icons/io5";
 
 const IngridientsButtonOrder = () => {
   return (
-    <Link to="/DetailTransaksi">
-        <div className="inline-flex mt-4 justify-around p-2 w-1/2 rounded-lg sm:mx-auto bg-primary">
-        <img
-          alt="shoppingcart"
-          src={iconcart}
-        />
-        <p
-          className="font-bold"
-          href="#"
-        >
-          Pesan Bahan
-        </p>
-      </div>
-    </Link>
+    <div className="mb-8 w-1/2 rounded-lg mt-4 sm:mx-auto bg-primary">
+      <Link
+        to="/detailtransaksi"
+        className="w-full flex py-2 justify-evenly  items-center"
+      >
+        <IoCartOutline size={30} />
+        <p className="font-bold">Pesan Bahan</p>
+      </Link>
+    </div>
   );
 };
 
