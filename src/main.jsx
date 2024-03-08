@@ -9,6 +9,7 @@ import DetailTransaksi from "./pages/DetailTransaksi.jsx";
 import Recipepage from "./pages/Recipepage.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
 import KatagoriPage from "./pages/KatagoriPage.jsx";
+import DetailPemesanan from "./pages/DetailPemesanan.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/KatagoriPage",
     element: <KatagoriPage />,
+  },
+  {
+    path: "/detailpemesanan",
+    element: <DetailPemesanan />,
   },
 ]);
 
