@@ -8,6 +8,7 @@ import Store from "./redux/store.js";
 import DetailTransaksi from "./pages/DetailTransaksi.jsx";
 import Recipepage from "./pages/Recipepage.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
+<<<<<<< HEAD
 import KategoriPage from "./pages/KategoriPage.jsx";
 import DetailPemesanan from "./pages/DetailPemesanan.jsx";
 import Middleware from "./pages/Middleware.jsx";
@@ -46,6 +47,49 @@ import Middleware from "./pages/Middleware.jsx";
 //     element: <DetailPemesanan />,
 //   },
 // ]);
+=======
+import Authentication from "./pages/Authenthication.jsx";
+import RiwayatPage from "./pages/RiwayatPage.jsx";
+import KatagoriPage from "./pages/KatagoriPage.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+
+  {
+    path: "/detailtransaksi",
+    element: <DetailTransaksi />,
+  },
+
+  {
+    path: "/favoritepage",
+    element: <FavoritePage />,
+  },
+
+  {
+    path: "/Authentication",
+    element: <Authentication />,
+  },
+  {
+    path: "/riwayatpage",
+    element: <RiwayatPage />,
+  },
+  {
+    path: "/Recipepage",
+    element: <Recipepage />,
+  },
+  {
+    path: "/FavoritePage",
+    element: <FavoritePage />,
+  },
+  {
+    path: "/KatagoriPage",
+    element: <KatagoriPage />,
+  },
+]);
+>>>>>>> feat/RiwayatPage
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
