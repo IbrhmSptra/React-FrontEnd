@@ -135,3 +135,44 @@ export async function getAllFavorite(callback, uid) {
     console.log(error);
   }
 }
+
+export async function insertTransaction(payload, callback) {
+  try {
+    await supabase.from("transaction").insert([payload]).then(callback);
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function getAllTransaction(callback, uid) {
+  try {
+    let { data: transaction, error } = await supabase
+      .from("transaction")
+      .select("*")
+      .eq("uid", uid);
+    callback(transaction);
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function getTransaction(callback, id) {
+  try {
+    let { data: transaction, error } = await supabase
+      .from("transaction")
+      .select("*")
+      .eq("id", id);
+    callback(transaction[0]);
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function getRecipe(callback, id) {
+  try {
+    const { data: bahandetail } = await supabase
+      .from("bahandetail")
+      .select("angka,bahan,harga")
+      .eq("idfood", id);
+    callback(bahandetail);
+  } catch (error) {
+    console.log(error);
+  }
+}

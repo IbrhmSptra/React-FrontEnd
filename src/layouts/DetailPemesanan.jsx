@@ -17,7 +17,7 @@ const DetailPemesanan = ({ data }) => {
         <div className="w-full bg-white shadow-xl border rounded-xl py-4 px-6 space-y-14 relative">
           <RingkasanTransaksi data={data} />
           <div className="flex justify-center w-ful">
-            <ButtonPemesanan />
+            <ButtonPemesanan data={data} />
           </div>
           <div className="flex justify-center">
             <p className="text-center text-xs text-grayText md:text-sm absolute bottom-6 font-light max-w-96">

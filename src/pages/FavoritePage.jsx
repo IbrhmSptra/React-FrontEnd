@@ -54,22 +54,11 @@ const FavoritePage = () => {
       <Navbar ref={favoriteSearch} />
       <Sidebar />
       <main className="pb-8 pt-24 px-4 sm:px-8 md:px-12 xl:px-40">
-<<<<<<< HEAD
         <Banner
           src={banner}
           addClass="bg-primary"
           textColor="text-black"
           text="Favorite"
-=======
-        <Banner title="Favorite" />
-        <Filter
-          filter={[
-            "Harga Terendah",
-            "Harga Tertinggi",
-            "Ulasan Terbaik",
-            "Pesanan Terbanyak",
-          ]}
->>>>>>> feat/RiwayatPage
         />
         <Filter
           filter={filter}

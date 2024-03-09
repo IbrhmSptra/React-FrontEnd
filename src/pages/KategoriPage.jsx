@@ -14,7 +14,7 @@ const KategoriPage = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
 
-  //filter
+  //-------------------filter ** Bug
   const filter = [
     "Harga Terendah",
     "Harga Tertinggi",
@@ -37,6 +37,7 @@ const KategoriPage = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  //---------------
 
   // Get data from supabase
   useEffect(() => {

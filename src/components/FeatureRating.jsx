@@ -19,7 +19,7 @@ const FeatureRating = () => {
               onClick={() => setRating(currentRating)}
             />
             <FaStar
-              size={40}
+              size={15}
               className="cursor-pointer"
               color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
               onMouseEnter={() => setHover(currentRating)}
@@ -28,7 +28,6 @@ const FeatureRating = () => {
           </label>
         );
       })}
-      <p className="ml-2 pt-1 flex items-center">( 20 )</p>
     </div>
   );
 };
