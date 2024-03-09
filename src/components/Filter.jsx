@@ -1,27 +1,16 @@
-import { useState, useEffect } from "react";
 import arrow from "../assets/img/Filter/right-arrow-svgrepo-com.png";
 
-const Filter = ({ filter }) => {
-  const [selectedFilter, setSelectedFilter] = useState(filter[0]);
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    console.log(selectedFilter);
-  }, [selectedFilter]);
-
-  const handleFilterChange = (filter) => {
-    setSelectedFilter(filter);
-    setIsOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Filter = ({
+  filter,
+  handleFilterChange,
+  toggleDropdown,
+  selectedFilter,
+  isOpen,
+}) => {
   return (
     <div className="mt-[56px] flex items-center ">
       <p className="text-xl font-['Poppins']">Urutkan :</p>
-      <div className="relative ml-4" onClick={toggleDropdown}>
+      <div className="relative ml-4 cursor-pointer" onClick={toggleDropdown}>
         <div className="w-[240px] h-[30px] sm:w-[338px] sm:h-[37px] md:w-[338px] md:h-[37px] lg:w-[338px] lg:h-[37px] bg-white rounded-[15px] border border-yellow-400 relative z-9">
           <img
             className="w-[20px] h-[14px] absolute right-0 top-1/2 transform -translate-y-1/2 mr-4"

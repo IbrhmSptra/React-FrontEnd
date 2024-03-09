@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { createClient } from "@supabase/supabase-js";
+import Bookmark from "../components/Bookmark";
 const API_KEY = import.meta.env.VITE_API_KEY;
 const supabaseUrl = "https://qqnkeeuttacyfctgebzc.supabase.co";
 const supabaseKey = API_KEY;
@@ -87,6 +88,49 @@ export async function getRekomendasi(callback) {
       .select("id,food,web_img,harga,kategori(kategori)")
       .range(8, 19);
     callback(allfood);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function insertFavorite(payload) {
+  try {
+    await supabase.from("Favorite").insert([payload]);
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function deleteFavorite(uid, id_food) {
+  try {
+    await supabase
+      .from("Favorite")
+      .delete()
+      .eq("uid", uid)
+      .eq("id_food", id_food);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getFavorite(callback, uid, id_food) {
+  try {
+    let { data: Favorite, error } = await supabase
+      .from("Favorite")
+      .select("*")
+      .eq("uid", uid)
+      .eq("id_food", id_food);
+    callback(Favorite);
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function getAllFavorite(callback, uid) {
+  try {
+    let { data: Favorite, error } = await supabase
+      .from("Favorite")
+      .select("*")
+      .eq("uid", uid);
+    callback(Favorite);
   } catch (error) {
     console.log(error);
   }
