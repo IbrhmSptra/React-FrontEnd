@@ -1,4 +1,5 @@
-const RingkasanTransaksi = () => {
+const RingkasanTransaksi = ({ data }) => {
+  console.log(data);
   return (
     <div className="">
       <h1 className="text-tertiary text-xl font-semibold">
@@ -16,8 +17,15 @@ const RingkasanTransaksi = () => {
           <div>:</div>
         </div>
         <div>
-          <p>19</p>
-          <p>Rp100.000</p>
+          <p>{data.recipe && data.recipe.length}</p>
+          <p>
+            Rp
+            {data.data &&
+              data.data.harga.toLocaleString("id-ID", {
+                styles: "currency",
+                currency: "IDR",
+              })}
+          </p>
           <p>COD (Cash On Delivery)</p>
         </div>
       </div>

@@ -9,9 +9,8 @@ export async function SignIn(callback, credentials) {
   callback(data, error?.message);
 }
 
-export async function SignOut() {
-  let { error } = await supabase.auth.signOut();
-  console.log(error?.message);
+export async function SignOut(callback) {
+  await supabase.auth.signOut().then(callback);
 }
 
 export async function SignUp(callback, credentials) {
@@ -24,4 +23,11 @@ export async function InsertCredentials(id, username, email) {
     .from("akun")
     .insert([{ uid: id, username: `${username}`, email: `${email}` }])
     .select();
+}
+export async function getUsername(callback, id) {
+  let { data: akun } = await supabase
+    .from("akun")
+    .select("username")
+    .eq("uid", id);
+  callback(akun[0].username);
 }

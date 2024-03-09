@@ -18,9 +18,9 @@ const Recipepage = () => {
   useEffect(() => {
     getDetailRecipe((data) => {
       setDetail(data);
-      console.log(data);
     }, id);
   }, []);
+  console.log(detail);
   const RecipeSearch = useRef(null);
   return (
     <>
@@ -40,7 +40,7 @@ const Recipepage = () => {
               <RatingFood />
             </div>
 
-            <IngridientsButtonOrder />
+            <IngridientsButtonOrder id={id} />
           </div>
         </div>
         <div className="sm:flex justify-between gap-4">

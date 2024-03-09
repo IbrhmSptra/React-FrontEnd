@@ -14,8 +14,9 @@ import { SignOut } from "../services/supabase.auth.service";
 const Navbar = forwardRef((props, ref) => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    SignOut();
-    navigate("/authpage");
+    SignOut(() => {
+      navigate(0);
+    });
   };
   return (
     <nav className="font-poppins w-full bg-primary flex items-start justify-between px-4 py-4 gap-10 fixed z-30 top-0 max-h-16 sm:px-8 md:px-12 xl:px-40 xl:py-4 xl:gap-x-40">

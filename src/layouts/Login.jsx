@@ -37,7 +37,7 @@ function Login(props) {
       if (error) {
         dispatch(setError(error));
       } else {
-        navigate("/");
+        navigate(0);
       }
     }, credentials);
   };

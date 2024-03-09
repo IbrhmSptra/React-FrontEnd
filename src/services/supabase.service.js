@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { createClient } from "@supabase/supabase-js";
-import { data } from "autoprefixer";
 const API_KEY = import.meta.env.VITE_API_KEY;
 const supabaseUrl = "https://qqnkeeuttacyfctgebzc.supabase.co";
 const supabaseKey = API_KEY;
@@ -17,7 +16,6 @@ export async function getKategori(callback) {
   }
 }
 
-//ini ubah
 export async function getFoodbyKategori(callback, id) {
   let data = {};
   try {
@@ -41,7 +39,7 @@ export async function getDetailRecipe(callback, id) {
   try {
     const { data: allfood } = await supabase
       .from("allfood")
-      .select("id,food,web_img,description")
+      .select("id,food,web_img,description,harga")
       .eq("id", id);
     const { data: bahandetail } = await supabase
       .from("bahandetail")

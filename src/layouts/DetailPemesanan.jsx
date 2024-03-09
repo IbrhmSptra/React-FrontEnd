@@ -3,7 +3,7 @@ import DetailPemesananPertama from "../components/DetailPemesananPertama";
 import RingkasanTransaksi from "../components/RingkasanTransaksi";
 import ButtonPemesanan from "../components/ButtonPemesanan";
 
-const DetailPemesanan = () => {
+const DetailPemesanan = ({ data }) => {
   return (
     <div className="relative mb-20">
       <p className="font-semibold text-3xl">Pengiriman</p>
@@ -11,11 +11,11 @@ const DetailPemesanan = () => {
         <div className="w-full space-y-4">
           <SearchDetailPemesanan />
           <div className="bg-white shadow-xl border rounded-xl py-4 px-6">
-            <DetailPemesananPertama />
+            <DetailPemesananPertama bahan={data.recipe} />
           </div>
         </div>
         <div className="w-full bg-white shadow-xl border rounded-xl py-4 px-6 space-y-14 relative">
-          <RingkasanTransaksi />
+          <RingkasanTransaksi data={data} />
           <div className="flex justify-center w-ful">
             <ButtonPemesanan />
           </div>
