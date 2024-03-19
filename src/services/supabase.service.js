@@ -4,7 +4,7 @@ import Bookmark from "../components/Bookmark";
 const API_KEY = import.meta.env.VITE_API_KEY;
 const supabaseUrl = "https://qqnkeeuttacyfctgebzc.supabase.co";
 const supabaseKey = API_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function getKategori(callback) {
   try {

@@ -20,7 +20,6 @@ const Recipepage = () => {
       setDetail(data);
     }, id);
   }, [id]);
-  console.log(detail);
   const RecipeSearch = useRef(null);
   return (
     <>

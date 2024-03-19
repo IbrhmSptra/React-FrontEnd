@@ -9,6 +9,7 @@ import banner from "../assets/img/Banner/Background-2.webp";
 import { useEffect, useRef, useState } from "react";
 import Pagination from "../components/Pagination";
 import { getAllFavorite } from "../services/supabase.service";
+import { supabase } from "../services/supabase.service";
 
 const FavoritePage = () => {
   const user = JSON.parse(
@@ -16,12 +17,27 @@ const FavoritePage = () => {
   );
   const [data, setData] = useState([]);
 
+  //listening if theres insert or delete on favorite database
+  supabase
+    .channel("custom-all-channel")
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "Favorite" },
+      () => {
+        getAllFavorite((data) => {
+          data.sort((a, b) => a.harga - b.harga);
+          setData(data);
+        }, user.user.id);
+      }
+    )
+    .subscribe();
+
   useEffect(() => {
     getAllFavorite((data) => {
       data.sort((a, b) => a.harga - b.harga);
       setData(data);
     }, user.user.id);
-  }, [data]);
+  }, []);
 
   //---------------- filter *bug because render loop on useEffect Above
   const filter = [
@@ -71,13 +87,13 @@ const FavoritePage = () => {
         {data.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
             {data.map((value, index) => {
-              const data = {
+              const dataFormated = {
                 id: value.id_food,
                 food: value.food,
                 web_img: value.web_img,
                 harga: value.harga,
               };
-              return <Card key={index} data={data} />;
+              return <Card key={index} data={dataFormated} arrData={data} />;
             })}
           </div>
         ) : (

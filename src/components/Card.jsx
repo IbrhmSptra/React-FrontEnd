@@ -9,7 +9,7 @@ import {
   insertFavorite,
 } from "../services/supabase.service";
 
-const Card = ({ data }) => {
+const Card = ({ data, arrData }) => {
   const user = JSON.parse(
     localStorage.getItem("sb-qqnkeeuttacyfctgebzc-auth-token")
   );
@@ -27,7 +27,7 @@ const Card = ({ data }) => {
       user.user.id,
       data.id
     );
-  }, []);
+  }, [arrData]);
   const handleFavorite = () => {
     if (!bookmarked) {
       const payload = {
