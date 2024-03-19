@@ -16,7 +16,9 @@ const FeatureRating = () => {
               name="rating"
               value={currentRating}
               className="hidden"
-              onClick={() => setRating(currentRating)}
+              onClick={() => {
+                setRating(currentRating);
+              }}
             />
             <FaStar
               size={15}

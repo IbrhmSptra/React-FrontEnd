@@ -7,8 +7,8 @@ import { toggleAuth } from "../redux/slice/authPage";
 const Banner = (props) => {
   let {
     position = "right-0",
-    quetion = "Sudah Punya Akun?",
-    info = "Masuk Di Sini",
+    quetion = "Belum Punya Akun?",
+    info = "Daftar Di Sini",
   } = props;
 
   const slide = useSelector((state) => state.authpage.authChange);
@@ -16,8 +16,8 @@ const Banner = (props) => {
 
   if (slide == true) {
     position = "right-[50%]";
-    quetion = "Belum Punya Akun?";
-    info = "Daftar Di Sini";
+    quetion = "Sudah Punya Akun?";
+    info = "Masuk Di Sini";
   }
   return (
     <div
