@@ -14,7 +14,14 @@ const KategoriPage = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
 
-  //-------------------filter ** Bug
+  // Get data from supabase
+  useEffect(() => {
+    getFoodbyKategori((data) => {
+      setData(data);
+    }, id);
+  }, []);
+
+  //Filter Feature
   const filter = [
     "Harga Terendah",
     "Harga Tertinggi",
@@ -25,27 +32,16 @@ const KategoriPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleFilterChange = (filter) => {
     setSelectedFilter(filter);
-    if (data && selectedFilter == "Harga Tertinggi") {
-      data.food.sort((a, b) => a.harga - b.harga);
-      setData(data);
-    } else if (data && selectedFilter == "Harga Terendah") {
-      data.food.sort((a, b) => b.harga - a.harga);
-      setData(data);
-    }
     setIsOpen(false);
   };
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  //---------------
-
-  // Get data from supabase
-  useEffect(() => {
-    getFoodbyKategori((data) => {
-      data.food.sort((a, b) => a.harga - b.harga);
-      setData(data);
-    }, id);
-  }, []);
+  const sortMethods = {
+    "Harga Terendah": (a, b) => a.harga - b.harga,
+    "Harga Tertinggi": (a, b) => b.harga - a.harga,
+  };
+  // -----------
 
   const KategoriSearch = useRef(null);
   return (
@@ -68,7 +64,10 @@ const KategoriPage = () => {
           isOpen={isOpen}
         />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
-          {data && data.food.map((value, i) => <Card key={i} data={value} />)}
+          {data &&
+            data.food
+              .sort(sortMethods[selectedFilter])
+              .map((value, i) => <Card key={i} data={value} />)}
         </div>
         <Pagination />
       </main>

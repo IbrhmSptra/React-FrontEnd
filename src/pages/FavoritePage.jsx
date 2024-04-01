@@ -29,17 +29,15 @@ const FavoritePage = () => {
           setData(data);
         }, user.user.id);
       }
-    )
-    .subscribe();
-
+    );
+  //get data from supabase
   useEffect(() => {
     getAllFavorite((data) => {
-      data.sort((a, b) => a.harga - b.harga);
       setData(data);
     }, user.user.id);
   }, []);
 
-  //---------------- filter *bug because render loop on useEffect Above
+  // Filter Feature
   const filter = [
     "Harga Terendah",
     "Harga Tertinggi",
@@ -50,19 +48,16 @@ const FavoritePage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleFilterChange = (filter) => {
     setSelectedFilter(filter);
-    if (data && selectedFilter == "Harga Tertinggi") {
-      data.sort((a, b) => a.harga - b.harga);
-      setData(data);
-    } else if (data && selectedFilter == "Harga Terendah") {
-      data.sort((a, b) => b.harga - a.harga);
-      setData(data);
-    }
     setIsOpen(false);
   };
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  //---------------------
+  const sortMethods = {
+    "Harga Terendah": (a, b) => a.harga - b.harga,
+    "Harga Tertinggi": (a, b) => b.harga - a.harga,
+  };
+  // ------------------------
 
   const favoriteSearch = useRef(null);
   return (
@@ -86,7 +81,7 @@ const FavoritePage = () => {
 
         {data.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
-            {data.map((value, index) => {
+            {data.sort(sortMethods[selectedFilter]).map((value, index) => {
               const dataFormated = {
                 id: value.id_food,
                 food: value.food,
