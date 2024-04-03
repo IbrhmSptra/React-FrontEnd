@@ -5,6 +5,8 @@ import { useState } from "react";
 import { InsertCredentials, SignUp } from "../services/supabase.auth.service";
 import { useDispatch, useSelector } from "react-redux";
 import { setError, toggleAuth } from "../redux/slice/authPage";
+import { toast } from "react-toastify";
+import { FaCheckCircle } from "react-icons/fa";
 
 function Register(props) {
   let { bottom = "z-1" } = props;
@@ -48,6 +50,17 @@ function Register(props) {
         } else {
           //insert credentials user into table akun
           InsertCredentials(data.user.id, username, email);
+          //add toast
+          toast("Akun anda berhasil terdaftar", {
+            icon: () => <FaCheckCircle size={40} color="#FEDA15" />,
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          });
           //clear the state
           setUsername("");
           setEmail("");

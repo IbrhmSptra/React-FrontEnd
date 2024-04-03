@@ -15,6 +15,7 @@ const Navbar = forwardRef((props, ref) => {
   const navigate = useNavigate();
   const handleLogout = () => {
     SignOut(() => {
+      localStorage.removeItem("username");
       navigate(0);
     });
   };

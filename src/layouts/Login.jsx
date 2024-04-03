@@ -3,7 +3,7 @@ import FillData from "../components/FillData";
 import AuthButton from "../components/AuthButton";
 import ChangeAuth from "../components/ChangeAuth";
 import { useState } from "react";
-import { SignIn } from "../services/supabase.auth.service";
+import { SignIn, getUsername } from "../services/supabase.auth.service";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../redux/slice/authPage";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,10 @@ function Login(props) {
       if (error) {
         dispatch(setError(error));
       } else {
-        navigate(0);
+        getUsername((username) => {
+          localStorage.setItem("username", username);
+          navigate(0);
+        }, res.user.id);
       }
     }, credentials);
   };

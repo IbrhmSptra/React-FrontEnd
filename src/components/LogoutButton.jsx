@@ -6,6 +6,7 @@ const LogoutButton = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     SignOut(() => {
+      localStorage.removeItem("username");
       navigate(0);
     });
   };

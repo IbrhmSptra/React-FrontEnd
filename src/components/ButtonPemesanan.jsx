@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { insertTransaction } from "../services/supabase.service";
 import { useNavigate } from "react-router-dom";
 import { setAlamat } from "../redux/slice/webContent";
+import { toast } from "react-toastify";
+import { FaCheckCircle } from "react-icons/fa";
 
 const ButtonPemesanan = ({ data }) => {
   const user = JSON.parse(
@@ -24,6 +26,18 @@ const ButtonPemesanan = ({ data }) => {
       };
       insertTransaction(payload, () => {
         dispatch(setAlamat(""));
+        setTimeout(() => {
+          toast("Pesananmu berhasil terkonfirmasi", {
+            icon: () => <FaCheckCircle size={40} color="#FEDA15" />,
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          });
+        }, 10);
         navigate("/");
       });
     }
