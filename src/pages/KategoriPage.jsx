@@ -5,7 +5,7 @@ import Sidebar from "../layouts/Sidebar";
 import Filter from "../components/Filter";
 import Card from "../components/Card";
 import { useEffect, useRef, useState } from "react";
-import Banner from "../components/Banner";
+import Banner from "../components/KategoriBanner";
 import { useParams } from "react-router-dom";
 import { getFoodbyKategori } from "../services/supabase.service";
 import Pagination from "../components/Pagination";

@@ -1,12 +1,12 @@
-function AuthButton({ children, className, onClick }) {
+const ButtonAuth = ({ label }) => {
   return (
     <button
+      className={`text-headline bg-primary w-full py-2 rounded-xl font-bold md:text-lg`}
       type="submit"
-      onClick={onClick}
-      className={`bg-primary w-full py-2 mt-8 font-bold text-xl rounded-md uppercase ${className}`}
     >
-      {children}
+      {label}
     </button>
   );
-}
-export default AuthButton;
+};
+
+export default ButtonAuth;

@@ -3,7 +3,7 @@ import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
 import Sidebar from "../layouts/Sidebar";
 import Filter from "../components/Filter";
-import Banner from "../components/Banner";
+import Banner from "../components/KategoriBanner";
 import { useEffect, useRef, useState } from "react";
 import CardRiwayat from "../components/CardRiwayat";
 import { getAllTransaction } from "../services/supabase.service";

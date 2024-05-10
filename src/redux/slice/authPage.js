@@ -4,7 +4,7 @@ const authPage = createSlice({
   name: "authPageState",
   initialState: {
     error: null,
-    authChange: false,
+    isLogin: true,
   },
   reducers: {
     setError: (state, action) => {
@@ -14,7 +14,7 @@ const authPage = createSlice({
       state.error = null;
     },
     toggleAuth: (state) => {
-      state.authChange = !state.authChange;
+      state.isLogin = !state.isLogin;
     },
   },
 });

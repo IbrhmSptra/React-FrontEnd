@@ -1,12 +1,20 @@
-import Login from "../layouts/Login";
-import Register from "../layouts/Register";
-import Banner from "../layouts/Banner";
-import BigBanner from "../layouts/BigBanner";
+// import Login from "../layouts/Login";
+// import Register from "../layouts/Register";
+// import Banner from "../layouts/Banner";
+// import BigBanner from "../layouts/BigBanner";
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import WelcomeAuth from "../layouts/WelcomeAuth";
+import LoginForm from "../layouts/LoginLayout";
+import RegisterForm from "../layouts/RegisterLayout";
+import { useSelector } from "react-redux";
+import Background from "../assets/img/background.webp";
+import BannerAuth from "../layouts/BannerAuth";
+
 function Authentication() {
+  const isLogin = useSelector((state) => state.authpage.isLogin);
   return (
-    <>
+    <div>
       <ToastContainer
         className="font-poppins text-headline text-sm"
         position="top-right"
@@ -22,22 +30,36 @@ function Authentication() {
         transition={Bounce}
         progressStyle={{ backgroundColor: "#FEDA15" }}
       />
-      <div className="w-screen h-screen overflow-x-hidden scroll-smooth">
-        <div className="overflow-x-hidden w-screen h-screen relative">
-          <BigBanner />
-        </div>
+      <WelcomeAuth />
+      <section
+        id="auth"
+        className=" h-screen py-10 px-4 sm:px-8 md:px-12 xl:px-40  font-poppins"
+      >
+        {/* Only For Mobile */}
         <div
-          id="auth"
-          className="w-screen h-screen flex justify-center items-center"
+          className="h-full block sm:hidden"
+          style={{
+            backgroundImage: `url(${Background})`,
+            backgroundSize: "cover",
+            backgroundAttachment: "fixed",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
         >
-          <div className="relative h-screen w-screen rounded-xl overflow-hidden flex md:border-primary md:border-2 md:h-[90%] lg:w-[80%]">
-            <Login />
-            <Register />
-            <Banner />
-          </div>
+          {isLogin ? <LoginForm /> : <RegisterForm />}
         </div>
-      </div>
-    </>
+
+        <div className="h-full w-full hidden gap-x-2 sm:flex border-4 border-primary relative rounded-xl overflow-hidden">
+          <div className="w-full px-4 md:px-8 lg:px-14">
+            <LoginForm />
+          </div>
+          <div className="w-full px-4 md:px-10 lg:px-14">
+            <RegisterForm />
+          </div>
+          <BannerAuth />
+        </div>
+      </section>
+    </div>
   );
 }
 

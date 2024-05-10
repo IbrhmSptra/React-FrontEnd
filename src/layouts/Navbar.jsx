@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/display-name */
-import Logo from "../components/Logo";
+import Logo from "../components/Brand";
 import Search from "../components/Search";
 import Bookmark from "../components/Bookmark";
 import History from "../components/History";

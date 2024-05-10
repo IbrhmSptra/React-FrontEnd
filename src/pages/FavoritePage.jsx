@@ -3,7 +3,7 @@ import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
 import Sidebar from "../layouts/Sidebar";
 import Filter from "../components/Filter";
-import Banner from "../components/Banner";
+import Banner from "../components/KategoriBanner";
 import Card from "../components/Card";
 import banner from "../assets/img/Banner/Background-2.webp";
 import { useEffect, useRef, useState } from "react";
