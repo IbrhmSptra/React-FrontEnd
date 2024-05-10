@@ -5,7 +5,7 @@ import Search from "../components/Search";
 import Bookmark from "../components/Bookmark";
 import History from "../components/History";
 import Profile from "../components/Profile";
-import MenuButton from "../components/MenuButton";
+import MenuButton from "../components/Button/MenuButton";
 import { Link, useNavigate } from "react-router-dom";
 import { forwardRef } from "react";
 import { AiOutlineLogout } from "react-icons/ai";

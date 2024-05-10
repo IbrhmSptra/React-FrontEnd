@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import { Navigation } from "swiper/modules";
-import ArrowButton from "../components/ArrowButton";
+import ArrowButton from "../components/Button/ArrowButton";
 import { useEffect, useState } from "react";
 import { getTrending } from "../services/supabase.service";
 

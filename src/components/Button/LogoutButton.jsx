@@ -1,6 +1,6 @@
 import { MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { SignOut } from "../services/supabase.auth.service";
+import { SignOut } from "../../services/supabase.auth.service";
 
 const LogoutButton = () => {
   const navigate = useNavigate();

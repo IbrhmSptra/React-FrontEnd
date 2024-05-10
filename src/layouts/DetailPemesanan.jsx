@@ -1,7 +1,7 @@
 import SearchDetailPemesanan from "../components/SearchDetailPemesanan";
 import DetailPemesananPertama from "../components/DetailPemesananPertama";
 import RingkasanTransaksi from "../components/RingkasanTransaksi";
-import ButtonPemesanan from "../components/ButtonPemesanan";
+import ButtonPemesanan from "../components/Button/ButtonPemesanan";
 
 const DetailPemesanan = ({ data }) => {
   return (

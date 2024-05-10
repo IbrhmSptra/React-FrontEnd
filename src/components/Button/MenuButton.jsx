@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSidebar } from "../redux/slice/webContent";
+import { toggleSidebar } from "../../redux/slice/webContent";
 
 const MenuButton = () => {
   const isSidebarOpen = useSelector((state) => state.webcontent.sidebar);

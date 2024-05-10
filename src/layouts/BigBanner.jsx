@@ -1,6 +1,6 @@
 import Background from "../components/Background";
 import logo from "../assets/img/Logo.png";
-import DownArrowBtn from "../components/DownArrowBtn";
+import DownArrowBtn from "../components/Button/DownArrowBtn";
 import LogoForBanner from "../components/LogoForBanner";
 
 function BigBanner() {

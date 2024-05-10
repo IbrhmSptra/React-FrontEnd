@@ -1,8 +1,8 @@
 import { GoPackageDependents } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
-import { insertTransaction } from "../services/supabase.service";
+import { insertTransaction } from "../../services/supabase.service";
 import { useNavigate } from "react-router-dom";
-import { setAlamat } from "../redux/slice/webContent";
+import { setAlamat } from "../../redux/slice/webContent";
 import { toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
 

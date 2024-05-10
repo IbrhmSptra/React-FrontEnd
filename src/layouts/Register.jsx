@@ -1,5 +1,5 @@
 import FillData from "../components/FillData";
-import AuthButton from "../components/AuthButton";
+import AuthButton from "../components/Button/AuthButton";
 import ChangeAuth from "../components/ChangeAuth";
 import { useState } from "react";
 import { InsertCredentials, SignUp } from "../services/supabase.auth.service";
