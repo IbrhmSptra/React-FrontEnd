@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { createClient } from "@supabase/supabase-js";
-import Bookmark from "../components/Bookmark";
 const API_KEY = import.meta.env.VITE_API_KEY;
 const supabaseUrl = "https://qqnkeeuttacyfctgebzc.supabase.co";
 const supabaseKey = API_KEY;

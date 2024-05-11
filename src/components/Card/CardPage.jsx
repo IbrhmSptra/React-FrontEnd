@@ -7,7 +7,7 @@ import {
   deleteFavorite,
   getFavorite,
   insertFavorite,
-} from "../services/supabase.service";
+} from "../../services/supabase.service";
 
 const Card = ({ data, arrData }) => {
   const user = JSON.parse(

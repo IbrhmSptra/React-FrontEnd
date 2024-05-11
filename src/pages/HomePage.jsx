@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import Carousel from "../components/Carousel";
-import Footer from "../layouts/Footer";
+import Carousel from "../components/Header/Carousel";
+import Footer from "../layouts/PageLayouts/Footer";
 import Kategori from "../layouts/Kategori";
-import Navbar from "../layouts/Navbar";
+import Navbar from "../layouts/PageLayouts/Navbar";
 import Rekomendasi from "../layouts/Rekomendasi";
-import Sidebar from "../layouts/Sidebar";
+import Sidebar from "../layouts/PageLayouts/Sidebar";
 import Trending from "../layouts/Trending";
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

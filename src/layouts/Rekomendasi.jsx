@@ -1,4 +1,4 @@
-import CardFood from "../components/CardFood";
+import CardFood from "../components/Card/CardFood";
 import { useEffect, useState } from "react";
 import { getRekomendasi } from "../services/supabase.service";
 

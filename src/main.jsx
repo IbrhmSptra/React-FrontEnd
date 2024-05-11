@@ -4,11 +4,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import { Provider } from "react-redux";
 import Store from "./redux/store.js";
-import DetailTransaksi from "./pages/DetailTransaksi.jsx";
+import DetailTransaksi from "./pages/DetailTransaksiPage.jsx";
 import Recipepage from "./pages/Recipepage.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
 import KategoriPage from "./pages/KategoriPage.jsx";
-import DetailPemesanan from "./pages/DetailPemesanan.jsx";
+import DetailPemesanan from "./pages/SummaryOrderPage.jsx";
 import Middleware from "./pages/Middleware.jsx";
 import RiwayatPage from "./pages/RiwayatPage.jsx";
 

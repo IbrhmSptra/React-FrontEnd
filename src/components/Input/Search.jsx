@@ -8,10 +8,10 @@ import {
   closeSearchExpand,
   closeSidebar,
   openSearchExpand,
-} from "../redux/slice/webContent";
+} from "../../redux/slice/webContent";
 import SearchItem from "./SearchItem";
-import useAnotherCompClicked from "../hooks/useAnotherCompClicked";
-import { searchFood } from "../services/supabase.service";
+import useAnotherCompClicked from "../../hooks/useAnotherCompClicked";
+import { searchFood } from "../../services/supabase.service";
 
 const Search = forwardRef((props, ref) => {
   const [searchQuery, setSearchQuery] = useState("");

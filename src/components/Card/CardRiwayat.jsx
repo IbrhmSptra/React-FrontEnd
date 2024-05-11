@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import FeatureRating from "./FeatureRating";
+import FeatureRating from "../Input/FeatureRating";
 
 const CardRiwayat = ({ data }) => {
   let options = {

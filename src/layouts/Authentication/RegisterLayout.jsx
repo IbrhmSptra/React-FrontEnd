@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setError, toggleAuth } from "../redux/slice/authPage";
-import Input from "../components/Input/Input";
-import AuthButton from "../components/Button/AuthButton";
-import NavigateAuth from "../components/Button/NavigateAuth";
-import Brand from "../components/Brand";
-import { InsertCredentials, SignUp } from "../services/supabase.auth.service";
+import { setError, toggleAuth } from "../../redux/slice/authPage";
+import Input from "../../components/Input/Input";
+import AuthButton from "../../components/Button/AuthButton";
+import NavigateAuth from "../../components/Button/NavigateAuth";
+import Brand from "../../components/Icon/Brand";
+import {
+  InsertCredentials,
+  SignUp,
+} from "../../services/supabase.auth.service";
 import { toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
 

@@ -1,7 +1,7 @@
-import iklan1 from "../assets/img/Promo/iklan-1.png";
-import iklan2 from "../assets/img/Promo/iklan-2.png";
-import iklan3 from "../assets/img/Promo/iklan-3.png";
-import iklan4 from "../assets/img/Promo/iklan-4.png";
+import iklan1 from "../../assets/img/Promo/iklan-1.png";
+import iklan2 from "../../assets/img/Promo/iklan-2.png";
+import iklan3 from "../../assets/img/Promo/iklan-3.png";
+import iklan4 from "../../assets/img/Promo/iklan-4.png";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
 import { Pagination, Autoplay, EffectCoverflow } from "swiper/modules";
-import useWindowDimensions from "../hooks/useWindowSize";
+import useWindowDimensions from "../../hooks/useWindowSize";
 
 function Carousel() {
   const { width } = useWindowDimensions();

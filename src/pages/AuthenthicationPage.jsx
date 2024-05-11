@@ -4,12 +4,12 @@
 // import BigBanner from "../layouts/BigBanner";
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import WelcomeAuth from "../layouts/WelcomeAuth";
-import LoginForm from "../layouts/LoginLayout";
-import RegisterForm from "../layouts/RegisterLayout";
+import WelcomeAuth from "../layouts/Authentication/WelcomeAuth";
+import LoginForm from "../layouts/Authentication/LoginLayout";
+import RegisterForm from "../layouts/Authentication/RegisterLayout";
 import { useSelector } from "react-redux";
 import Background from "../assets/img/background.webp";
-import BannerAuth from "../layouts/BannerAuth";
+import BannerAuth from "../layouts/Authentication/BannerAuth";
 
 function Authentication() {
   const isLogin = useSelector((state) => state.authpage.isLogin);

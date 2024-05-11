@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import RecipePageCard from "../components/RecipePageCard";
-import Footer from "../layouts/Footer";
-import Navbar from "../layouts/Navbar";
+import RecipePageCard from "../components/Header/ImageHeader";
+import Footer from "../layouts/PageLayouts/Footer";
+import Navbar from "../layouts/PageLayouts/Navbar";
 import RecipeDescription from "../components/RecipeDescription";
 import RecipeIngridients from "../components/RecipeIngridients";
 import CookingMethod from "../components/CookingMethode";
-import IngridientsButtonOrder from "../components/IngridientsButtonOrder";
+import IngridientsButtonOrder from "../components/Button/IngridientsButtonOrder";
 import RatingFood from "../components/RatingFood";
-import Sidebar from "../layouts/Sidebar";
+import Sidebar from "../layouts/PageLayouts/Sidebar";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDetailRecipe } from "../services/supabase.service";

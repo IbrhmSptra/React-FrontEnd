@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Footer from "../layouts/Footer";
-import Navbar from "../layouts/Navbar";
-import Sidebar from "../layouts/Sidebar";
-import Filter from "../components/Filter";
-import Banner from "../components/KategoriBanner";
+import Footer from "../layouts/PageLayouts/Footer";
+import Navbar from "../layouts/PageLayouts/Navbar";
+import Sidebar from "../layouts/PageLayouts/Sidebar";
+import Filter from "../components/Input/Filter";
+import Banner from "../components/Header/HeaderBanner";
 import { useEffect, useRef, useState } from "react";
-import CardRiwayat from "../components/CardRiwayat";
+import CardRiwayat from "../components/Card/CardRiwayat";
 import { getAllTransaction } from "../services/supabase.service";
-import Pagination from "../components/Pagination";
+import Pagination from "../components/Input/Pagination";
 
 const RiwayatPage = () => {
   const riwayatSearch = useRef(null);

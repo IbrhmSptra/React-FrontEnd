@@ -1,6 +1,6 @@
-import appstore from "../assets/img/appstore.png";
-import playstore from "../assets/img/playstore.png";
-import logo from "../assets/img/Logo.png";
+import appstore from "../../assets/img/appstore.png";
+import playstore from "../../assets/img/playstore.png";
+import logo from "../../assets/img/Logo.png";
 import { FaFacebook } from "react-icons/fa";
 import { LuInstagram } from "react-icons/lu";
 import { BsTwitterX } from "react-icons/bs";

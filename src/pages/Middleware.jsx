@@ -1,6 +1,6 @@
 // import { useEffect } from "react";
 // import { useLocation } from "react-router-dom";
-import Authentication from "./Authenthication";
+import Authentication from "./AuthenthicationPage";
 
 const Middleware = ({ children }) => {
   const user = JSON.parse(

@@ -1,7 +1,7 @@
-import Profile from "../components/Profile";
-import Bookmark from "../components/Bookmark";
-import History from "../components/History";
-import LogoutButton from "../components/Button/LogoutButton";
+import Profile from "../../components/Icon/Profile";
+import Bookmark from "../../components/Icon/Bookmark";
+import History from "../../components/Icon/History";
+import LogoutButton from "../../components/Button/LogoutButton";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 

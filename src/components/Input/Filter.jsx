@@ -1,4 +1,4 @@
-import arrow from "../assets/img/Filter/right-arrow-svgrepo-com.png";
+import arrow from "../../assets/img/Filter/right-arrow-svgrepo-com.png";
 
 const Filter = ({
   filter,

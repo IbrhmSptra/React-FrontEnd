@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import Brand from "../components/Brand";
-import NavigateAuth from "../components/Button/NavigateAuth";
-import Background from "../assets/img/background.webp";
+import Brand from "../../components/Icon/Brand";
+import NavigateAuth from "../../components/Button/NavigateAuth";
+import Background from "../../assets/img/background.webp";
 
 const BannerAuth = () => {
   const isLogin = useSelector((state) => state.authpage.isLogin);

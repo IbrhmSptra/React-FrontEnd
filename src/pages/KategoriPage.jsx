@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Footer from "../layouts/Footer";
-import Navbar from "../layouts/Navbar";
-import Sidebar from "../layouts/Sidebar";
-import Filter from "../components/Filter";
-import Card from "../components/Card";
+import Footer from "../layouts/PageLayouts/Footer";
+import Navbar from "../layouts/PageLayouts/Navbar";
+import Sidebar from "../layouts/PageLayouts/Sidebar";
+import Filter from "../components/Input/Filter";
+import Card from "../components/Card/CardPage";
 import { useEffect, useRef, useState } from "react";
-import Banner from "../components/KategoriBanner";
+import Banner from "../components/Header/HeaderBanner";
 import { useParams } from "react-router-dom";
 import { getFoodbyKategori } from "../services/supabase.service";
-import Pagination from "../components/Pagination";
+import Pagination from "../components/Input/Pagination";
 
 const KategoriPage = () => {
   const { id } = useParams();

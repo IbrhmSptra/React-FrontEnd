@@ -1,5 +1,4 @@
 const RingkasanTransaksi = ({ data }) => {
-  console.log(data);
   return (
     <div className="">
       <h1 className="text-tertiary text-xl font-semibold">

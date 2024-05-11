@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/display-name */
-import Logo from "../components/Brand";
-import Search from "../components/Search";
-import Bookmark from "../components/Bookmark";
-import History from "../components/History";
-import Profile from "../components/Profile";
-import MenuButton from "../components/Button/MenuButton";
+import Logo from "../../components/Icon/Brand";
+import Search from "../../components/Input/Search";
+import Bookmark from "../../components/Icon/Bookmark";
+import History from "../../components/Icon/History";
+import Profile from "../../components/Icon/Profile";
+import MenuButton from "../../components/Button/MenuButton";
 import { Link, useNavigate } from "react-router-dom";
 import { forwardRef } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
-import { SignOut } from "../services/supabase.auth.service";
+import { SignOut } from "../../services/supabase.auth.service";
 
 const Navbar = forwardRef((props, ref) => {
   const navigate = useNavigate();

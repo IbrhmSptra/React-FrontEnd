@@ -1,6 +1,6 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { setAlamat } from "../redux/slice/webContent";
+import { setAlamat } from "../../redux/slice/webContent";
 
 const SearchDetailPemesanan = () => {
   const dispatch = useDispatch();

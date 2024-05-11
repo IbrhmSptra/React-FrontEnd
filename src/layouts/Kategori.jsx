@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import KategoriCard from "../components/KategoriCard";
+import KategoriCard from "../components/Card/KategoriCard";
 import { getKategori } from "../services/supabase.service";
 
 const Kategori = () => {

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SignIn, getUsername } from "../services/supabase.auth.service";
-import { setError } from "../redux/slice/authPage";
-import Input from "../components/Input/Input";
-import AuthButton from "../components/Button/AuthButton";
-import NavigateAuth from "../components/Button/NavigateAuth";
-import Brand from "../components/Brand";
+import { SignIn, getUsername } from "../../services/supabase.auth.service";
+import { setError } from "../../redux/slice/authPage";
+import Input from "../../components/Input/Input";
+import AuthButton from "../../components/Button/AuthButton";
+import NavigateAuth from "../../components/Button/NavigateAuth";
+import Brand from "../../components/Icon/Brand";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

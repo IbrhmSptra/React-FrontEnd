@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import DetailPemesananLayout from "../layouts/DetailPemesanan";
-import Navbar from "../layouts/Navbar";
-import Sidebar from "../layouts/Sidebar";
-import Footer from "../layouts/Footer";
+import DetailPemesananLayout from "../layouts/SummaryOrderLayout";
+import Navbar from "../layouts/PageLayouts/Navbar";
+import Sidebar from "../layouts/PageLayouts/Sidebar";
+import Footer from "../layouts/PageLayouts/Footer";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDetailRecipe } from "../services/supabase.service";

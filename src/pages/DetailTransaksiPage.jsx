@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Footer from "../layouts/Footer";
-import Navbar from "../layouts/Navbar";
-import Sidebar from "../layouts/Sidebar";
-import DetailTransaksiLayout from "../layouts/DetailTransaksi";
+import Footer from "../layouts/PageLayouts/Footer";
+import Navbar from "../layouts/PageLayouts/Navbar";
+import Sidebar from "../layouts/PageLayouts/Sidebar";
+import DetailTransaksiLayout from "../layouts/OrderDetailLayout";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getRecipe, getTransaction } from "../services/supabase.service";

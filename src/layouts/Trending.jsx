@@ -1,4 +1,4 @@
-import CardFood from "../components/CardFood";
+import CardFood from "../components/Card/CardFood";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles

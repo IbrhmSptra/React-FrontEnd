@@ -1,7 +1,7 @@
-import Brand from "../components/Brand";
-import Tagline from "../components/Tagline";
-import StartButton from "../components/Button/StartButton";
-import Background from "../assets/img/background.webp";
+import Brand from "../../components/Icon/Brand";
+import Tagline from "../../components/Tagline";
+import StartButton from "../../components/Button/StartButton";
+import Background from "../../assets/img/background.webp";
 
 const WelcomeAuth = () => {
   return (

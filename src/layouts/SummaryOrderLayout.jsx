@@ -1,5 +1,5 @@
-import SearchDetailPemesanan from "../components/SearchDetailPemesanan";
-import DetailPemesananPertama from "../components/DetailPemesananPertama";
+import LocationInput from "../components/Input/LocationInput";
+import OrderList from "../components/OrderList";
 import RingkasanTransaksi from "../components/RingkasanTransaksi";
 import ButtonPemesanan from "../components/Button/ButtonPemesanan";
 
@@ -10,9 +10,9 @@ const DetailPemesanan = ({ data }) => {
         <p className="font-semibold text-3xl">Pengiriman</p>
         <div className="space-y-4 md:space-y-0 md:flex space-between gap-x-10 mt-6">
           <div className="w-full space-y-4">
-            <SearchDetailPemesanan />
+            <LocationInput />
             <div className="bg-white shadow-xl border rounded-xl py-4 px-6">
-              <DetailPemesananPertama bahan={data.recipe} />
+              <OrderList data={data.recipe} />
             </div>
           </div>
           <div className="w-full bg-white shadow-xl border rounded-xl py-4 px-6 space-y-14 relative">
