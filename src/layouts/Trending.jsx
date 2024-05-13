@@ -5,16 +5,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
 import ArrowButton from "../components/Button/ArrowButton";
-import { useEffect, useState } from "react";
-import { getTrending } from "../services/supabase.service";
+import axios from "axios";
+import useSWR from "swr";
+import SkeletonTrending from "./Skeleton/SkeletonTrending";
 
 const Trending = () => {
-  const [trending, setTrending] = useState([]);
-  useEffect(() => {
-    getTrending((data) => {
-      setTrending(data);
-    });
-  }, []);
+  const API_URL = import.meta.env.VITE_API_URL;
+  const fetcher = (url) => axios.get(url).then((res) => res.data);
+  const { data, error, isLoading } = useSWR(
+    `${API_URL}/api/food/random?limit=10`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      revalidateIfStale: false,
+    }
+  );
+  if (error) {
+    console.error("Fetch Error :", error?.response.data.message);
+  }
+
   return (
     <div className="mt-8">
       <h1 className="font-medium text-lg xl:text-xl">Trending</h1>
@@ -31,11 +41,15 @@ const Trending = () => {
           }}
         >
           <ArrowButton direction="left" />
-          {trending.map((value, i) => (
-            <SwiperSlide key={i}>
-              <CardFood data={value} />
-            </SwiperSlide>
-          ))}
+          {isLoading ? (
+            <SkeletonTrending />
+          ) : (
+            data.data.map((value, i) => (
+              <SwiperSlide key={i}>
+                <CardFood data={value} />
+              </SwiperSlide>
+            ))
+          )}
           <ArrowButton direction="right" />
         </Swiper>
       </div>

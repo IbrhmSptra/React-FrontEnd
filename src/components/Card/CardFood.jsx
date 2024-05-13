@@ -8,11 +8,11 @@ const CardFood = ({ data, addStyle }) => {
         <Link to={`/recipepage/${data.id}`}>
           <img
             className="h-32 w-full object-cover"
-            src={data.web_img}
+            src={data.image}
             alt="imgFood"
           />
           <div className="p-2">
-            <p className="text-sm text-center">{data.food}</p>
+            <p className="text-sm text-center">{data.name}</p>
           </div>
         </Link>
       </div>

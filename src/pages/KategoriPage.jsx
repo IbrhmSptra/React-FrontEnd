@@ -4,22 +4,19 @@ import Navbar from "../layouts/PageLayouts/Navbar";
 import Sidebar from "../layouts/PageLayouts/Sidebar";
 import Filter from "../components/Input/Filter";
 import Card from "../components/Card/CardPage";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Banner from "../components/Header/HeaderBanner";
 import { useParams } from "react-router-dom";
-import { getFoodbyKategori } from "../services/supabase.service";
 import Pagination from "../components/Input/Pagination";
+import axios from "axios";
+import useSWR from "swr";
+import SkeletonBannerCategory from "../layouts/Skeleton/SkeletonBannerCategory";
+import SkeletonCardPage from "../layouts/Skeleton/SkeletonCardPage";
 
 const KategoriPage = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
-  const [data, setData] = useState(null);
-
-  // Get data from supabase
-  useEffect(() => {
-    getFoodbyKategori((data) => {
-      setData(data);
-    }, id);
-  }, []);
+  let page = 1;
 
   //Filter Feature
   const filter = [
@@ -37,11 +34,36 @@ const KategoriPage = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  const sortMethods = {
-    "Harga Terendah": (a, b) => a.harga - b.harga,
-    "Harga Tertinggi": (a, b) => b.harga - a.harga,
-  };
   // -----------
+
+  const sortMethods = {
+    "Harga Terendah": "&price=asc",
+    "Harga Tertinggi": "&price=desc",
+    "Ulasan Terbaik": "&rating=desc",
+    "Pesanan Terbanyak": "&order=desc",
+  };
+
+  //fetch api
+  const fetcher = (url) => axios.get(url).then((res) => res.data);
+  const {
+    data: category,
+    error: errorCategory,
+    isLoading: categoryLoading,
+  } = useSWR(`${API_URL}/api/categories/${id}`, fetcher);
+  const {
+    data: food,
+    error: errorFood,
+    isLoading: loadingFood,
+  } = useSWR(
+    `${API_URL}/api/food?page=${page}&category=${id}${sortMethods[selectedFilter]}`,
+    fetcher
+  );
+  if (errorFood) {
+    console.error("Fetch Error :", errorFood?.response.data.message);
+  }
+  if (errorCategory) {
+    console.error("Fetch Error :", errorCategory?.response.data.message);
+  }
 
   const KategoriSearch = useRef(null);
   return (
@@ -49,11 +71,13 @@ const KategoriPage = () => {
       <Navbar ref={KategoriSearch} />
       <Sidebar />
       <main className="pb-8 pt-24 px-4 sm:px-8 md:px-12 xl:px-40">
-        {data && (
+        {categoryLoading ? (
+          <SkeletonBannerCategory />
+        ) : (
           <Banner
-            src={data.kategori.web_header_img}
+            src={category.data.header_image}
             textColor="text-white drop-shadow-2xl"
-            text={data.kategori.kategori}
+            text={category.data.name}
           />
         )}
         <Filter
@@ -64,10 +88,11 @@ const KategoriPage = () => {
           isOpen={isOpen}
         />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
-          {data &&
-            data.food
-              .sort(sortMethods[selectedFilter])
-              .map((value, i) => <Card key={i} data={value} />)}
+          {loadingFood ? (
+            <SkeletonCardPage />
+          ) : (
+            food.data.map((value, i) => <Card key={i} data={value} />)
+          )}
         </div>
         <Pagination />
       </main>
