@@ -1,14 +1,18 @@
 import { MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { SignOut } from "../../services/supabase.auth.service";
+import axios from "axios";
 
 const LogoutButton = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const handleLogout = () => {
-    SignOut(() => {
-      localStorage.removeItem("username");
-      navigate(0);
-    });
+    axios
+      .delete(`${API_URL}/auth/logout`)
+      .then(() => {
+        localStorage.removeItem("username");
+        navigate(0);
+      })
+      .catch((error) => console.error(error?.response.data.message));
   };
   return (
     <div onClick={handleLogout}>

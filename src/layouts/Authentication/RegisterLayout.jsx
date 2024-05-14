@@ -5,18 +5,17 @@ import Input from "../../components/Input/Input";
 import AuthButton from "../../components/Button/AuthButton";
 import NavigateAuth from "../../components/Button/NavigateAuth";
 import Brand from "../../components/Icon/Brand";
-import {
-  InsertCredentials,
-  SignUp,
-} from "../../services/supabase.auth.service";
 import { toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
+import axios from "axios";
 
 const RegisterForm = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const error = useSelector((state) => state.authpage.error);
   const dispatch = useDispatch();
 
@@ -34,15 +33,16 @@ const RegisterForm = () => {
     } else if (password !== confirmPassword) {
       dispatch(setError("Password Tidak Sama"));
     } else {
-      const data = { email: email, password: password };
+      setLoading(true);
       //sign up auth supabase
-      SignUp((data, error) => {
-        // kalau eror
-        if (error) {
-          dispatch(setError(error));
-        } else {
-          //insert credentials user into table akun
-          InsertCredentials(data.user.id, username, email);
+      axios
+        .post(`${API_URL}/auth/register`, {
+          username: username,
+          email: email,
+          password: password,
+        })
+        .then(() => {
+          setLoading(false);
           //add toast
           toast("Akun anda berhasil terdaftar", {
             icon: () => <FaCheckCircle size={40} color="#FEDA15" />,
@@ -60,8 +60,11 @@ const RegisterForm = () => {
           setPassword("");
           setConfirmPassword("");
           dispatch(toggleAuth());
-        }
-      }, data);
+        })
+        .catch((error) => {
+          setLoading(false);
+          dispatch(setError(error?.response.data.message));
+        });
     }
   };
 
@@ -106,7 +109,7 @@ const RegisterForm = () => {
           {error && <p className="text-red-500 text-center">{error}</p>}
         </div>
         <div className="space-y-4">
-          <AuthButton label="SIGN UP" />
+          <AuthButton label={loading ? "loading" : "LOGIN"} />
           <NavigateAuth addClass="sm:hidden" />
         </div>
       </form>

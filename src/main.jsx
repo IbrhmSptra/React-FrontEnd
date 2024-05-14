@@ -11,6 +11,8 @@ import KategoriPage from "./pages/KategoriPage.jsx";
 import DetailPemesanan from "./pages/SummaryOrderPage.jsx";
 import Middleware from "./pages/Middleware.jsx";
 import RiwayatPage from "./pages/RiwayatPage.jsx";
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={Store}>

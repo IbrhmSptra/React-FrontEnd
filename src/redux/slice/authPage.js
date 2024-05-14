@@ -19,5 +19,6 @@ const authPage = createSlice({
   },
 });
 
-export const { setError, clearError, toggleAuth } = authPage.actions;
+export const { setError, clearError, toggleAuth, setLogin, setLogout } =
+  authPage.actions;
 export default authPage.reducer;

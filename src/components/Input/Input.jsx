@@ -8,7 +8,7 @@ const Input = ({ type, label, placeholder, onchange, value }) => {
       <h3 className={`text-headline font-bold text-lg lg:text-xl`}>{label}</h3>
 
       <input
-        className={`w-full text-xs py-3 px-4 rounded-lg border-primary text-grayText border-2 bg-card mt-1 lg:text-lg `}
+        className={`w-full text-xs py-3 px-4 rounded-lg border-primary text-grayText border-2 bg-card mt-1 lg:text-lg focus:outline-primary`}
         type={type}
         placeholder={placeholder}
         onChange={onchange}

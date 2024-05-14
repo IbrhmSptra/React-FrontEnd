@@ -1,36 +1,36 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SignIn, getUsername } from "../../services/supabase.auth.service";
 import { setError } from "../../redux/slice/authPage";
 import Input from "../../components/Input/Input";
 import AuthButton from "../../components/Button/AuthButton";
 import NavigateAuth from "../../components/Button/NavigateAuth";
 import Brand from "../../components/Icon/Brand";
+import axios from "axios";
 
 const LoginForm = () => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const error = useSelector((state) => state.authpage.error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const credentials = {
-      email: email,
-      password: password,
-    };
-    SignIn((res, error) => {
-      if (error) {
-        dispatch(setError(error));
-      } else {
-        getUsername((username) => {
-          localStorage.setItem("username", username);
-          navigate(0);
-        }, res.user.id);
-      }
-    }, credentials);
+    setLoading(true);
+    axios
+      .post(`${API_URL}/auth/login`, { email: email, password: password })
+      .then((res) => {
+        localStorage.setItem("username", res.data.data.username);
+        setLoading(false);
+        navigate(0);
+      })
+      .catch((error) => {
+        setLoading(false);
+        dispatch(setError(error?.response.data.message));
+      });
   };
   return (
     <form
@@ -60,7 +60,7 @@ const LoginForm = () => {
         {error && <p className="text-red-500 text-center">{error}</p>}
       </div>
       <div className="space-y-10">
-        <AuthButton label={"LOGIN"} />
+        <AuthButton label={loading ? "loading" : "LOGIN"} />
         <NavigateAuth addClass="sm:hidden" />
       </div>
     </form>

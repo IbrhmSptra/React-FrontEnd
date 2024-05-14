@@ -1,21 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import { useEffect } from "react";
 // import { useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import Authentication from "./AuthenthicationPage";
 
 const Middleware = ({ children }) => {
-  const user = JSON.parse(
-    localStorage.getItem("sb-qqnkeeuttacyfctgebzc-auth-token")
-  );
-  // const { pathname } = useLocation();
+  const authState = useAuth();
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, [pathname]);
-
-  if (!user) {
-    return <Authentication />;
+  if (authState) {
+    return children;
   }
-  return children;
+  return <Authentication />;
 };
 
 export default Middleware;

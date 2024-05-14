@@ -15,7 +15,6 @@ const Rekomendasi = () => {
       revalidateIfStale: false,
     }
   );
-  console.log(data);
   if (error) {
     console.error("Fetch Error :", error?.response.data.message);
   }

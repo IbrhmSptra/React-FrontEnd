@@ -9,15 +9,19 @@ import MenuButton from "../../components/Button/MenuButton";
 import { Link, useNavigate } from "react-router-dom";
 import { forwardRef } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
-import { SignOut } from "../../services/supabase.auth.service";
+import axios from "axios";
 
 const Navbar = forwardRef((props, ref) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const handleLogout = () => {
-    SignOut(() => {
-      localStorage.removeItem("username");
-      navigate(0);
-    });
+    axios
+      .delete(`${API_URL}/auth/logout`)
+      .then(() => {
+        localStorage.removeItem("username");
+        navigate(0);
+      })
+      .catch((error) => console.error(error?.response.data.message));
   };
   return (
     <nav className="font-poppins w-full bg-primary flex items-start justify-between px-4 py-4 gap-10 fixed z-30 top-0 max-h-16 sm:px-8 md:px-12 xl:px-40 xl:py-4 xl:gap-x-40">
