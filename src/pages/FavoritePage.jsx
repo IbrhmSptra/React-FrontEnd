@@ -9,7 +9,6 @@ import banner from "../assets/img/Banner/Background-2.webp";
 import { useRef, useState } from "react";
 import Pagination from "../components/Input/Pagination";
 import useSWR from "swr";
-import SkeletonCardPage from "../layouts/Skeleton/SkeletonCardPage";
 import { fetchGet } from "../services/axios.service";
 
 const FavoritePage = () => {
@@ -70,18 +69,24 @@ const FavoritePage = () => {
           isOpen={isOpen}
         />
 
-        {data ? (
+        {isLoading ? (
+          <div className="min-h-24">
+            <h1 className="text-center text-headline text-2xl w-full py-20 animate-pulse  ">
+              Memuat Favorite Food Anda....
+            </h1>
+          </div>
+        ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
-            {isLoading ? (
-              <SkeletonCardPage />
-            ) : (
+            {data ? (
               data.data.map((value, i) => (
                 <Card key={i} data={value} refresh={mutate} />
               ))
+            ) : (
+              <h1 className="text-center text-headline w-full py-20">
+                Bookmark Kosong
+              </h1>
             )}
           </div>
-        ) : (
-          <h1 className="text-center w-full py-20">Bookmark Kosong</h1>
         )}
 
         <Pagination setPage={setPage} totalPage={data?.totalPages} />

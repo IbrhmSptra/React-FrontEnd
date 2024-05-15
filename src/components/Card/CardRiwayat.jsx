@@ -8,7 +8,7 @@ const CardRiwayat = ({ data }) => {
     month: "long",
     day: "numeric",
   };
-  let date = new Date(data.created_at);
+  let date = new Date(data.date);
 
   let formattedDate = date.toLocaleDateString("id-ID", options);
   return (
@@ -18,16 +18,16 @@ const CardRiwayat = ({ data }) => {
     >
       <img
         className="w-1/2 min-w-44 max-h-36 object-cover"
-        src={data.web_img}
+        src={data.image}
         alt="img-thumbnail"
       />
       <div className="py-4 px-2 flex flex-col justify-around">
         <div className="space-y-1">
-          <h1 className="line-clamp-1">{data.food}</h1>
+          <h1 className="line-clamp-1">{data.name}</h1>
           <p className="text-xs text-grayText font-light">{formattedDate}</p>
           <p className="font-semibold text-tertiary text-sm">
             Rp
-            {data.harga.toLocaleString("id-ID", {
+            {data.price.toLocaleString("id-ID", {
               styles: "currency",
               currency: "IDR",
             })}

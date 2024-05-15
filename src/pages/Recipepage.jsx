@@ -62,7 +62,11 @@ const Recipepage = () => {
             </div>
           </div>
         )}
-        <div className="sm:flex justify-between gap-4">
+        <div
+          className={`sm:flex justify-between gap-4 ${
+            isLoading ? "mt-6" : null
+          }`}
+        >
           {isLoading ? (
             <SkeletonBannerDetail />
           ) : (
