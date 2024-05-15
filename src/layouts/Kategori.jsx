@@ -1,14 +1,14 @@
 import KategoriCard from "../components/Card/KategoriCard";
 import useSWR from "swr";
-import axios from "axios";
 import SkeletonCategory from "./Skeleton/SkeletonCategory";
+import { fetchGet } from "../services/axios.service";
 
 const Kategori = () => {
   const API_URL = import.meta.env.VITE_API_URL;
-  const fetcher = (url) => axios.get(url).then((res) => res.data);
+
   const { data, error, isLoading } = useSWR(
     `${API_URL}/api/categories`,
-    fetcher
+    fetchGet
   );
   if (error) {
     console.error("Fetch Error :", error?.response.data.message);

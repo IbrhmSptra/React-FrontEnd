@@ -1,14 +1,13 @@
 import CardFood from "../components/Card/CardFood";
 import useSWR from "swr";
-import axios from "axios";
 import SkeletonRekomendasi from "./Skeleton/SkeletonRekomendasi";
+import { fetchGet } from "../services/axios.service";
 
 const Rekomendasi = () => {
   const API_URL = import.meta.env.VITE_API_URL;
-  const fetcher = (url) => axios.get(url).then((res) => res.data);
   const { data, error, isLoading } = useSWR(
     `${API_URL}/api/food/random?limit=12`,
-    fetcher,
+    fetchGet,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,

@@ -3,25 +3,27 @@ import DetailPemesananLayout from "../layouts/SummaryOrderLayout";
 import Navbar from "../layouts/PageLayouts/Navbar";
 import Sidebar from "../layouts/PageLayouts/Sidebar";
 import Footer from "../layouts/PageLayouts/Footer";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useParams } from "react-router-dom";
-import { getDetailRecipe } from "../services/supabase.service";
+import { fetchGet } from "../services/axios.service";
+import useSWR from "swr";
 
 const DetailPemesanan = () => {
   const { id } = useParams();
-  const [detail, setDetail] = useState([]);
-  useEffect(() => {
-    getDetailRecipe((data) => {
-      setDetail(data);
-    }, id);
-  }, []);
+  const API_URL = import.meta.env.VITE_API_URL;
+  //fetch api
+  const { data, error } = useSWR(`${API_URL}/api/food/${id}`, fetchGet);
+  if (error) {
+    console.log("Fetch Error :", error?.response.data.message);
+  }
+
   const pemesananSearch = useRef(null);
   return (
     <>
       <Navbar ref={pemesananSearch} />
       <Sidebar />
       <main className="pb-8 pt-24 px-4 sm:px-8 md:px-12 xl:px-40">
-        <DetailPemesananLayout data={detail} />
+        {data && <DetailPemesananLayout data={data.data} />}
       </main>
       <Footer />
     </>

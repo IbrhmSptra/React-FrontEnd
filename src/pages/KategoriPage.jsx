@@ -8,15 +8,15 @@ import { useRef, useState } from "react";
 import Banner from "../components/Header/HeaderBanner";
 import { useParams } from "react-router-dom";
 import Pagination from "../components/Input/Pagination";
-import axios from "axios";
 import useSWR from "swr";
 import SkeletonBannerCategory from "../layouts/Skeleton/SkeletonBannerCategory";
 import SkeletonCardPage from "../layouts/Skeleton/SkeletonCardPage";
+import { fetchGet } from "../services/axios.service";
 
 const KategoriPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
-  let page = 1;
+  const [page, setPage] = useState(1);
 
   //Filter Feature
   const filter = [
@@ -44,19 +44,18 @@ const KategoriPage = () => {
   };
 
   //fetch api
-  const fetcher = (url) => axios.get(url).then((res) => res.data);
   const {
     data: category,
     error: errorCategory,
     isLoading: categoryLoading,
-  } = useSWR(`${API_URL}/api/categories/${id}`, fetcher);
+  } = useSWR(`${API_URL}/api/categories/${id}`, fetchGet);
   const {
     data: food,
     error: errorFood,
     isLoading: loadingFood,
   } = useSWR(
     `${API_URL}/api/food?page=${page}&category=${id}${sortMethods[selectedFilter]}`,
-    fetcher
+    fetchGet
   );
   if (errorFood) {
     console.error("Fetch Error :", errorFood?.response.data.message);
@@ -94,7 +93,7 @@ const KategoriPage = () => {
             food.data.map((value, i) => <Card key={i} data={value} />)
           )}
         </div>
-        <Pagination />
+        <Pagination setPage={setPage} totalPage={food?.totalPages} />
       </main>
       <Footer />
     </div>

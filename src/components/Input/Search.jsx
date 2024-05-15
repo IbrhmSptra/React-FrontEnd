@@ -11,44 +11,39 @@ import {
 } from "../../redux/slice/webContent";
 import SearchItem from "./SearchItem";
 import useAnotherCompClicked from "../../hooks/useAnotherCompClicked";
-import { searchFood } from "../../services/supabase.service";
+import axios from "axios";
+import useSWR from "swr";
+import useDebounce from "../../hooks/useDebounce";
 
 const Search = forwardRef((props, ref) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
   const dispatch = useDispatch();
   const searchExpand = useSelector((state) => state.webcontent.searchExpand);
-  const value = {
-    id: 1,
-    category: "Nusantara",
-    name: "Nasi Goreng",
-  };
 
   //close search item when user click another component
   useAnotherCompClicked(ref, () => {
     dispatch(closeSearchExpand());
   });
 
-  useEffect(() => {
-    if (searchQuery !== "") {
-      const delay = setTimeout(() => {
-        searchFood((data) => {
-          setSearchResult(data);
-        }, searchQuery);
-      }, 500);
-      return () => {
-        clearTimeout(delay);
-      };
-    } else {
-      const delay = setTimeout(() => {
-        dispatch(closeSearchExpand());
-        setSearchResult([]);
-      }, 500);
-      return () => {
-        clearTimeout(delay);
-      };
+  //fetch API
+  const fetcher = (url) => axios(url).then((res) => res.data);
+  const debounceSearch = useDebounce(searchQuery, 500);
+  const { data, error, isLoading } = useSWR(
+    () =>
+      debounceSearch
+        ? `${API_URL}/api/food/search?query=${debounceSearch}`
+        : null,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      revalidateIfStale: false,
     }
-  }, [searchQuery]);
+  );
+  if (error) {
+    console.error("Fetch Error :", error?.response.data.message);
+  }
 
   return (
     <>
@@ -70,12 +65,12 @@ const Search = forwardRef((props, ref) => {
             value={searchQuery}
           />
         </div>
-        {searchExpand && searchResult.length > 0 && (
+        {searchExpand && data?.data?.length > 0 && (
           <div
-            className="w-full bg-card border-2 border-primary rounded-xl divide-y divide-y-grayText bg-white"
+            className="w-full bg-card border-2 border-primary rounded-xl divide-y divide-y-grayText bg-white absolute"
             ref={ref}
           >
-            {searchResult.slice(0, 3).map((value, i) => (
+            {data.data.slice(0, 3).map((value, i) => (
               <SearchItem data={value} key={i} />
             ))}
           </div>

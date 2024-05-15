@@ -1,46 +1,50 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import {
-  deleteFavorite,
-  getFavorite,
-  insertFavorite,
-} from "../../services/supabase.service";
 import { FaHeart } from "react-icons/fa6";
+import useSWR from "swr";
+import { fetchDelete, fetchGet, fetchPost } from "../../services/axios.service";
+import useSWRMutation from "swr/mutation";
 
 // import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
-const RecipePageCard = ({ src, addStyle, data }) => {
-  const user = JSON.parse(
-    localStorage.getItem("sb-qqnkeeuttacyfctgebzc-auth-token")
+const RecipePageCard = ({ src, addStyle, id }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
+  const [isLoved, setIsLoved] = useState(false);
+
+  //fetch
+  const { data: bookmark, error } = useSWR(
+    `${API_URL}/api/bookmark/${id}`,
+    fetchGet
   );
-  const [bookmarked, setBookmarked] = useState(false);
+  if (error) {
+    console.error("Fetch Error :", error?.response.data.message);
+  }
+  //set color love
   useEffect(() => {
-    getFavorite(
-      (data) => {
-        if (data.length > 0) {
-          setBookmarked(true);
-        } else {
-          setBookmarked(false);
-        }
-      },
-      user.user.id,
-      data.id
-    );
-  }, [data]);
-  const handleFavorite = () => {
-    if (!bookmarked) {
-      const payload = {
-        food: data.food,
-        harga: data.harga,
-        web_img: data.web_img,
-        id_food: data.id,
-      };
-      insertFavorite(payload);
-    } else {
-      deleteFavorite(user.user.id, data.id);
+    if (bookmark?.data) {
+      setIsLoved(true);
     }
-    setBookmarked(!bookmarked);
+  }, [bookmark]);
+
+  //delete Bookmark
+  const { trigger: deleteBookmark } = useSWRMutation(
+    `${API_URL}/api/bookmark/${id}`,
+    fetchDelete
+  );
+
+  //add Bookmark
+  const { trigger: addBookmark } = useSWRMutation(
+    `${API_URL}/api/bookmark/${id}`,
+    fetchPost
+  );
+  const handleFavorite = () => {
+    if (isLoved) {
+      deleteBookmark(`${API_URL}/api/bookmark/${id}`);
+    } else {
+      addBookmark(`${API_URL}/api/bookmark/${id}`);
+    }
+    setIsLoved(!isLoved);
   };
   return (
     <div className={`sm:w-1/2 relative ${addStyle}`}>
@@ -53,7 +57,7 @@ const RecipePageCard = ({ src, addStyle, data }) => {
         onClick={handleFavorite}
         className="w-7 h-7 bg-white rounded-full flex items-center justify-center border absolute top-2 right-2 cursor-pointer"
       >
-        <FaHeart color={bookmarked ? "#feda15" : "#6F6F6F"} />
+        <FaHeart color={isLoved ? "#feda15" : "#6F6F6F"} />
       </div>
     </div>
   );

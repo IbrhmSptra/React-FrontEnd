@@ -5,16 +5,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
 import ArrowButton from "../components/Button/ArrowButton";
-import axios from "axios";
 import useSWR from "swr";
 import SkeletonTrending from "./Skeleton/SkeletonTrending";
+import { fetchGet } from "../services/axios.service";
 
 const Trending = () => {
   const API_URL = import.meta.env.VITE_API_URL;
-  const fetcher = (url) => axios.get(url).then((res) => res.data);
   const { data, error, isLoading } = useSWR(
     `${API_URL}/api/food/random?limit=10`,
-    fetcher,
+    fetchGet,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,

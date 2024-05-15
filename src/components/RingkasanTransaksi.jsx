@@ -16,14 +16,13 @@ const RingkasanTransaksi = ({ data }) => {
           <div>:</div>
         </div>
         <div>
-          <p>{data.recipe && data.recipe.length}</p>
+          <p>{data.ingredients.length}</p>
           <p>
             Rp
-            {data.data &&
-              data.data.harga.toLocaleString("id-ID", {
-                styles: "currency",
-                currency: "IDR",
-              })}
+            {data.ingredients.reduce(
+              (total, ingredient) => total + ingredient.price,
+              0
+            )}
           </p>
           <p>COD (Cash On Delivery)</p>
         </div>

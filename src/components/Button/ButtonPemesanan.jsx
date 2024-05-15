@@ -1,45 +1,52 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { GoPackageDependents } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
-import { insertTransaction } from "../../services/supabase.service";
 import { useNavigate } from "react-router-dom";
 import { setAlamat } from "../../redux/slice/webContent";
 import { toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
+import useSWRMutation from "swr/mutation";
+import { fetchPostOrder } from "../../services/axios.service";
+import { useEffect } from "react";
 
-const ButtonPemesanan = ({ data }) => {
-  const user = JSON.parse(
-    localStorage.getItem("sb-qqnkeeuttacyfctgebzc-auth-token")
-  );
+const ButtonPemesanan = ({ id }) => {
   const alamat = useSelector((state) => state.webcontent.alamat);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  //delete Bookmark
+  const {
+    data,
+    trigger: addOrder,
+    isMutating,
+  } = useSWRMutation(
+    { url: `${API_URL}/api/order/${id}`, alamat: alamat },
+    fetchPostOrder
+  );
+
+  useEffect(() => {
+    if (!isMutating && data) {
+      setTimeout(() => {
+        dispatch(setAlamat(""));
+        toast("Pesananmu berhasil terkonfirmasi", {
+          icon: () => <FaCheckCircle size={40} color="#FEDA15" />,
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
+      }, 10);
+      navigate("/");
+    }
+  }, [isMutating]);
 
   const order = () => {
     if (alamat != "") {
-      const payload = {
-        id_food: data.data.id,
-        food: data.data.food,
-        harga: data.data.harga,
-        web_img: data.data.web_img,
-        uid: user.user.id,
-        alamat: alamat,
-      };
-      insertTransaction(payload, () => {
-        dispatch(setAlamat(""));
-        setTimeout(() => {
-          toast("Pesananmu berhasil terkonfirmasi", {
-            icon: () => <FaCheckCircle size={40} color="#FEDA15" />,
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "colored",
-          });
-        }, 10);
-        navigate("/");
-      });
+      addOrder(`${API_URL}/api/order/${id}`);
     }
   };
   return (

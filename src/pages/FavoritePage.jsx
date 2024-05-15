@@ -6,38 +6,17 @@ import Filter from "../components/Input/Filter";
 import Banner from "../components/Header/HeaderBanner";
 import Card from "../components/Card/CardPage";
 import banner from "../assets/img/Banner/Background-2.webp";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Pagination from "../components/Input/Pagination";
-import { getAllFavorite } from "../services/supabase.service";
-import { supabase } from "../services/supabase.service";
+import useSWR from "swr";
+import SkeletonCardPage from "../layouts/Skeleton/SkeletonCardPage";
+import { fetchGet } from "../services/axios.service";
 
 const FavoritePage = () => {
-  const user = JSON.parse(
-    localStorage.getItem("sb-qqnkeeuttacyfctgebzc-auth-token")
-  );
-  const [data, setData] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
+  const [page, setPage] = useState(1);
 
-  //listening if theres insert or delete on favorite database
-  supabase
-    .channel("custom-all-channel")
-    .on(
-      "postgres_changes",
-      { event: "*", schema: "public", table: "Favorite" },
-      () => {
-        getAllFavorite((data) => {
-          data.sort((a, b) => a.harga - b.harga);
-          setData(data);
-        }, user.user.id);
-      }
-    );
-  //get data from supabase
-  useEffect(() => {
-    getAllFavorite((data) => {
-      setData(data);
-    }, user.user.id);
-  }, []);
-
-  // Filter Feature
+  //Filter Feature
   const filter = [
     "Harga Terendah",
     "Harga Tertinggi",
@@ -53,11 +32,23 @@ const FavoritePage = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  // -----------
+
   const sortMethods = {
-    "Harga Terendah": (a, b) => a.harga - b.harga,
-    "Harga Tertinggi": (a, b) => b.harga - a.harga,
+    "Harga Terendah": "&price=asc",
+    "Harga Tertinggi": "&price=desc",
+    "Ulasan Terbaik": "&rating=desc",
+    "Pesanan Terbanyak": "&order=desc",
   };
-  // ------------------------
+
+  //fetch api
+  const { data, error, isLoading, mutate } = useSWR(
+    `${API_URL}/api/bookmark?page=${page}${sortMethods[selectedFilter]}`,
+    fetchGet
+  );
+  if (error) {
+    console.error("Fetch Error :", error?.response.data.message);
+  }
 
   const favoriteSearch = useRef(null);
   return (
@@ -79,23 +70,21 @@ const FavoritePage = () => {
           isOpen={isOpen}
         />
 
-        {data.length > 0 ? (
+        {data ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
-            {data.sort(sortMethods[selectedFilter]).map((value, index) => {
-              const dataFormated = {
-                id: value.id_food,
-                food: value.food,
-                web_img: value.web_img,
-                harga: value.harga,
-              };
-              return <Card key={index} data={dataFormated} arrData={data} />;
-            })}
+            {isLoading ? (
+              <SkeletonCardPage />
+            ) : (
+              data.data.map((value, i) => (
+                <Card key={i} data={value} refresh={mutate} />
+              ))
+            )}
           </div>
         ) : (
           <h1 className="text-center w-full py-20">Bookmark Kosong</h1>
         )}
 
-        <Pagination />
+        <Pagination setPage={setPage} totalPage={data?.totalPages} />
       </main>
       <Footer />
     </div>
