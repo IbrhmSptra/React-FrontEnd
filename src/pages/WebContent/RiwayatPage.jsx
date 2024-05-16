@@ -10,8 +10,11 @@ import CardRiwayat from "../../components/Card/CardRiwayat";
 import Pagination from "../../components/Input/Pagination";
 import useSWR from "swr";
 import { fetchGet } from "../../services/axios.service";
+import ModalLogout from "../../layouts/Authentication/ModalLogout";
+import { useSelector } from "react-redux";
 
 const RiwayatPage = () => {
+  const modalState = useSelector((state) => state.webcontent.modalLogout);
   const API_URL = import.meta.env.VITE_API_URL;
   const riwayatSearch = useRef(null);
   const [page, setPage] = useState(1);
@@ -46,6 +49,7 @@ const RiwayatPage = () => {
 
   return (
     <div className="font-poppins">
+      {modalState ? <ModalLogout /> : null}
       <Navbar ref={riwayatSearch} />
       <Sidebar />
       <main className="pb-8 pt-24 px-4 sm:px-8 md:px-12 xl:px-40">

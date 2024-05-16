@@ -8,11 +8,15 @@ import Sidebar from "../../layouts/PageLayouts/Sidebar";
 import Trending from "../../layouts/Wrapper/Trending";
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ModalLogout from "../../layouts/Authentication/ModalLogout";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const modalState = useSelector((state) => state.webcontent.modalLogout);
   const homeSearch = useRef(null);
   return (
     <>
+      {modalState ? <ModalLogout /> : null}
       <ToastContainer
         className="font-poppins text-headline text-sm"
         position="top-right"

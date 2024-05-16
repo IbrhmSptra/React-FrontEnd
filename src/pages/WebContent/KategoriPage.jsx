@@ -12,8 +12,11 @@ import useSWR from "swr";
 import SkeletonBannerCategory from "../../layouts/Skeleton/SkeletonBannerCategory";
 import SkeletonCardPage from "../../layouts/Skeleton/SkeletonCardPage";
 import { fetchGet } from "../../services/axios.service";
+import ModalLogout from "../../layouts/Authentication/ModalLogout";
+import { useSelector } from "react-redux";
 
 const KategoriPage = () => {
+  const modalState = useSelector((state) => state.webcontent.modalLogout);
   const API_URL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const [page, setPage] = useState(1);
@@ -67,6 +70,7 @@ const KategoriPage = () => {
   const KategoriSearch = useRef(null);
   return (
     <div className="font-poppins">
+      {modalState ? <ModalLogout /> : null}
       <Navbar ref={KategoriSearch} />
       <Sidebar />
       <main className="pb-8 pt-24 px-4 sm:px-8 md:px-12 xl:px-40">

@@ -6,6 +6,7 @@ const webContent = createSlice({
     sidebar: false,
     searchExpand: false,
     alamat: "",
+    modalLogout: false,
   },
   reducers: {
     toggleSidebar: (state) => {
@@ -23,6 +24,12 @@ const webContent = createSlice({
     setAlamat: (state, action) => {
       state.alamat = action.payload;
     },
+    openModal: (state) => {
+      state.modalLogout = true;
+    },
+    closeModal: (state) => {
+      state.modalLogout = false;
+    },
   },
 });
 
@@ -32,5 +39,7 @@ export const {
   openSearchExpand,
   closeSearchExpand,
   setAlamat,
+  openModal,
+  closeModal,
 } = webContent.actions;
 export default webContent.reducer;

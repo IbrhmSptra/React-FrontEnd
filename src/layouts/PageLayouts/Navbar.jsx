@@ -10,18 +10,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { forwardRef } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../redux/slice/webContent";
 
 const Navbar = forwardRef((props, ref) => {
-  const API_URL = import.meta.env.VITE_API_URL;
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    axios
-      .delete(`${API_URL}/auth/logout`)
-      .then(() => {
-        localStorage.removeItem("username");
-        navigate("/auth");
-      })
-      .catch((error) => console.error(error?.response.data.message));
+  const dispatch = useDispatch();
+  const showModal = () => {
+    dispatch(openModal());
   };
   return (
     <nav className="font-poppins w-full bg-primary flex items-start justify-between px-4 py-4 gap-10 fixed z-30 top-0 max-h-16 sm:px-8 md:px-12 xl:px-40 xl:py-4 xl:gap-x-40">
@@ -39,7 +34,7 @@ const Navbar = forwardRef((props, ref) => {
           </Link>
         </div>
         <Profile />
-        <div onClick={handleLogout}>
+        <div onClick={showModal}>
           <AiOutlineLogout className="text-tertiary text-2xl cursor-pointer" />
         </div>
       </div>
