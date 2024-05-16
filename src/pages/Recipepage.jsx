@@ -27,6 +27,7 @@ const Recipepage = () => {
     console.log("Fetch Error :", error?.response.data.message);
   }
 
+  //scroll to top
   useEffect(() => {
     window.scrollTo(0, 0);
   });

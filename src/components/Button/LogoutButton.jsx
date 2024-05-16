@@ -1,16 +1,20 @@
 import { MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { closeSidebar } from "../../redux/slice/webContent";
 
 const LogoutButton = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleLogout = () => {
     axios
       .delete(`${API_URL}/auth/logout`)
       .then(() => {
         localStorage.removeItem("username");
-        navigate(0);
+        dispatch(closeSidebar());
+        navigate("/auth");
       })
       .catch((error) => console.error(error?.response.data.message));
   };

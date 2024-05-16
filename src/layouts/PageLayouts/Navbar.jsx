@@ -19,7 +19,7 @@ const Navbar = forwardRef((props, ref) => {
       .delete(`${API_URL}/auth/logout`)
       .then(() => {
         localStorage.removeItem("username");
-        navigate(0);
+        navigate("/auth");
       })
       .catch((error) => console.error(error?.response.data.message));
   };

@@ -25,7 +25,7 @@ const LoginForm = () => {
       .then((res) => {
         localStorage.setItem("username", res.data.data.username);
         setLoading(false);
-        navigate(0);
+        navigate("/");
       })
       .catch((error) => {
         setLoading(false);

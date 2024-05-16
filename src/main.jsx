@@ -9,9 +9,11 @@ import Recipepage from "./pages/Recipepage.jsx";
 import FavoritePage from "./pages/FavoritePage.jsx";
 import KategoriPage from "./pages/KategoriPage.jsx";
 import DetailPemesanan from "./pages/SummaryOrderPage.jsx";
-import Middleware from "./pages/Middleware.jsx";
+import ProtectedRoute from "./pages/Middleware/ProtectedRoute.jsx";
+import ProtectedAuth from "./pages/Middleware/ProtectedAuth.jsx";
 import RiwayatPage from "./pages/RiwayatPage.jsx";
 import axios from "axios";
+import AuthenticationPage from "./pages/AuthenthicationPage.jsx";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -19,67 +21,75 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route
+          path="/auth"
+          element={
+            <ProtectedAuth>
+              <AuthenticationPage />
+            </ProtectedAuth>
+          }
+        />
+        <Route
           path="/"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <HomePage />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/detailtransaksi/:id"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <DetailTransaksi />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/favoritepage"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <FavoritePage />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/riwayatpage"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <RiwayatPage />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/recipepage/:id"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <Recipepage />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/recipepage/:id"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <Recipepage />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/kategoripage/:id"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <KategoriPage />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/detailpemesanan/:id"
           element={
-            <Middleware>
+            <ProtectedRoute>
               <DetailPemesanan />
-            </Middleware>
+            </ProtectedRoute>
           }
         />
       </Routes>

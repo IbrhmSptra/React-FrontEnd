@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useAuth = () => {
-  const [isAuthenticate, setisAuthenticate] = useState(false);
+  const [isAuthenticate, setisAuthenticate] = useState(null);
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -11,7 +11,6 @@ const useAuth = () => {
       try {
         await axios.get(`${API_URL}/auth/validate`);
         setisAuthenticate(true);
-        console.log();
       } catch (error) {
         setisAuthenticate(false);
       }
