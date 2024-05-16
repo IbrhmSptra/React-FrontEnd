@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import DetailPemesananLayout from "../layouts/SummaryOrderLayout";
-import Navbar from "../layouts/PageLayouts/Navbar";
-import Sidebar from "../layouts/PageLayouts/Sidebar";
-import Footer from "../layouts/PageLayouts/Footer";
+import DetailPemesananLayout from "../../layouts/Wrapper/SummaryOrderLayout";
+import Navbar from "../../layouts/PageLayouts/Navbar";
+import Sidebar from "../../layouts/PageLayouts/Sidebar";
+import Footer from "../../layouts/PageLayouts/Footer";
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
-import { fetchGet } from "../services/axios.service";
+import { fetchGet } from "../../services/axios.service";
 import useSWR from "swr";
 
 const DetailPemesanan = () => {

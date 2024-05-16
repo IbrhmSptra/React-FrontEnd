@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Footer from "../layouts/PageLayouts/Footer";
-import Navbar from "../layouts/PageLayouts/Navbar";
-import Sidebar from "../layouts/PageLayouts/Sidebar";
-import Filter from "../components/Input/Filter";
-import Card from "../components/Card/CardPage";
+import Footer from "../../layouts/PageLayouts/Footer";
+import Navbar from "../../layouts/PageLayouts/Navbar";
+import Sidebar from "../../layouts/PageLayouts/Sidebar";
+import Filter from "../../components/Input/Filter";
+import Card from "../../components/Card/CardPage";
 import { useRef, useState } from "react";
-import Banner from "../components/Header/HeaderBanner";
+import Banner from "../../components/Header/HeaderBanner";
 import { useParams } from "react-router-dom";
-import Pagination from "../components/Input/Pagination";
+import Pagination from "../../components/Input/Pagination";
 import useSWR from "swr";
-import SkeletonBannerCategory from "../layouts/Skeleton/SkeletonBannerCategory";
-import SkeletonCardPage from "../layouts/Skeleton/SkeletonCardPage";
-import { fetchGet } from "../services/axios.service";
+import SkeletonBannerCategory from "../../layouts/Skeleton/SkeletonBannerCategory";
+import SkeletonCardPage from "../../layouts/Skeleton/SkeletonCardPage";
+import { fetchGet } from "../../services/axios.service";
 
 const KategoriPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;

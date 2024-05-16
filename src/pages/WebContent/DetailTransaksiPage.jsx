@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Footer from "../layouts/PageLayouts/Footer";
-import Navbar from "../layouts/PageLayouts/Navbar";
-import Sidebar from "../layouts/PageLayouts/Sidebar";
-import DetailTransaksiLayout from "../layouts/OrderDetailLayout";
+import Footer from "../../layouts/PageLayouts/Footer";
+import Navbar from "../../layouts/PageLayouts/Navbar";
+import Sidebar from "../../layouts/PageLayouts/Sidebar";
+import DetailTransaksiLayout from "../../layouts/Wrapper/OrderDetailLayout";
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
 

@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import Carousel from "../components/Header/Carousel";
-import Footer from "../layouts/PageLayouts/Footer";
-import Kategori from "../layouts/Kategori";
-import Navbar from "../layouts/PageLayouts/Navbar";
-import Rekomendasi from "../layouts/Rekomendasi";
-import Sidebar from "../layouts/PageLayouts/Sidebar";
-import Trending from "../layouts/Trending";
+import Carousel from "../../components/Header/Carousel";
+import Footer from "../../layouts/PageLayouts/Footer";
+import Kategori from "../../layouts/Wrapper/Kategori";
+import Navbar from "../../layouts/PageLayouts/Navbar";
+import Rekomendasi from "../../layouts/Wrapper/Rekomendasi";
+import Sidebar from "../../layouts/PageLayouts/Sidebar";
+import Trending from "../../layouts/Wrapper/Trending";
 import { Bounce, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

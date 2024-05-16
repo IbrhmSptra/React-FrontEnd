@@ -1,7 +1,7 @@
-import CardFood from "../components/Card/CardFood";
+import CardFood from "../../components/Card/CardFood";
 import useSWR from "swr";
-import SkeletonRekomendasi from "./Skeleton/SkeletonRekomendasi";
-import { fetchGet } from "../services/axios.service";
+import SkeletonRekomendasi from "../Skeleton/SkeletonRekomendasi";
+import { fetchGet } from "../../services/axios.service";
 
 const Rekomendasi = () => {
   const API_URL = import.meta.env.VITE_API_URL;

@@ -1,27 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Footer from "../layouts/PageLayouts/Footer";
-import Navbar from "../layouts/PageLayouts/Navbar";
-import Sidebar from "../layouts/PageLayouts/Sidebar";
-import Filter from "../components/Input/Filter";
-import Banner from "../components/Header/HeaderBanner";
-import Card from "../components/Card/CardPage";
-import banner from "../assets/img/Banner/Background-2.webp";
+import Footer from "../../layouts/PageLayouts/Footer";
+import Navbar from "../../layouts/PageLayouts/Navbar";
+import Sidebar from "../../layouts/PageLayouts/Sidebar";
+import Filter from "../../components/Input/Filter";
+import Banner from "../../components/Header/HeaderBanner";
 import { useRef, useState } from "react";
-import Pagination from "../components/Input/Pagination";
+import banner from "../../assets/img/Banner/Background-2.webp";
+import CardRiwayat from "../../components/Card/CardRiwayat";
+import Pagination from "../../components/Input/Pagination";
 import useSWR from "swr";
-import { fetchGet } from "../services/axios.service";
+import { fetchGet } from "../../services/axios.service";
 
-const FavoritePage = () => {
+const RiwayatPage = () => {
   const API_URL = import.meta.env.VITE_API_URL;
+  const riwayatSearch = useRef(null);
   const [page, setPage] = useState(1);
 
-  //Filter Feature
-  const filter = [
-    "Harga Terendah",
-    "Harga Tertinggi",
-    "Ulasan Terbaik",
-    "Pesanan Terbanyak",
-  ];
+  // Filter Feature
+  const filter = ["Terbaru", "Terlama", "Harga Terendah", "Harga Tertinggi"];
   const [selectedFilter, setSelectedFilter] = useState(filter[0]);
   const [isOpen, setIsOpen] = useState(false);
   const handleFilterChange = (filter) => {
@@ -31,35 +27,33 @@ const FavoritePage = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  // -----------
-
+  // ------------------------------
   const sortMethods = {
     "Harga Terendah": "&price=asc",
     "Harga Tertinggi": "&price=desc",
-    "Ulasan Terbaik": "&rating=desc",
-    "Pesanan Terbanyak": "&order=desc",
+    Terbaru: "&date=desc",
+    Terlama: "&date=asc",
   };
 
   //fetch api
-  const { data, error, isLoading, mutate } = useSWR(
-    `${API_URL}/api/bookmark?page=${page}${sortMethods[selectedFilter]}`,
+  const { data, error, isLoading } = useSWR(
+    `${API_URL}/api/order?page=${page}${sortMethods[selectedFilter]}`,
     fetchGet
   );
   if (error) {
     console.error("Fetch Error :", error?.response.data.message);
   }
 
-  const favoriteSearch = useRef(null);
   return (
     <div className="font-poppins">
-      <Navbar ref={favoriteSearch} />
+      <Navbar ref={riwayatSearch} />
       <Sidebar />
       <main className="pb-8 pt-24 px-4 sm:px-8 md:px-12 xl:px-40">
         <Banner
           src={banner}
           addClass="bg-primary"
           textColor="text-black"
-          text="Favorite"
+          text="Riwayat"
         />
         <Filter
           filter={filter}
@@ -68,32 +62,30 @@ const FavoritePage = () => {
           selectedFilter={selectedFilter}
           isOpen={isOpen}
         />
-
         {isLoading ? (
-          <div className="min-h-24">
+          <div className="min-h-screen">
             <h1 className="text-center text-headline text-2xl w-full py-20 animate-pulse  ">
-              Memuat Favorite Food Anda....
+              Memuat Riwayat Order Anda....
             </h1>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-4 mb-10">
+          <div className="space-y-4 mt-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-4">
             {data ? (
-              data.data.map((value, i) => (
-                <Card key={i} data={value} refresh={mutate} />
-              ))
+              data.data.map((value, index) => {
+                return <CardRiwayat data={value} key={index} />;
+              })
             ) : (
               <h1 className="text-center text-headline w-full py-20">
-                Bookmark Kosong
+                Riwayat Order Kosong
               </h1>
             )}
           </div>
         )}
-
-        <Pagination setPage={setPage} totalPage={data?.totalPages} />
+        <Pagination totalPage={data?.totalPages} setPage={setPage} />
       </main>
       <Footer />
     </div>
   );
 };
 
-export default FavoritePage;
+export default RiwayatPage;

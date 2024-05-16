@@ -1,4 +1,4 @@
-import Logo from "../assets/img/Cooking-logo.png";
+import Logo from "../../assets/img/Cooking-logo.png";
 
 export default function Tagline() {
   return (

@@ -1,7 +1,7 @@
-import KategoriCard from "../components/Card/KategoriCard";
+import KategoriCard from "../../components/Card/KategoriCard";
 import useSWR from "swr";
-import SkeletonCategory from "./Skeleton/SkeletonCategory";
-import { fetchGet } from "../services/axios.service";
+import SkeletonCategory from "../Skeleton/SkeletonCategory";
+import { fetchGet } from "../../services/axios.service";
 
 const Kategori = () => {
   const API_URL = import.meta.env.VITE_API_URL;

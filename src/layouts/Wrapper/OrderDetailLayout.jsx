@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import OrderDetail from "../components/OrderDetail";
-import OrderList from "../components/OrderList";
-import { fetchGet } from "../services/axios.service";
-import SkeletonRecipe from "./Skeleton/SkeletonRecipePage";
+import OrderDetail from "../Content/OrderDetail";
+import OrderList from "../Content/OrderList";
+import { fetchGet } from "../../services/axios.service";
+import SkeletonRecipe from "../Skeleton/SkeletonRecipePage";
 import { useEffect } from "react";
 
 const DetailTransaksi = ({ id }) => {

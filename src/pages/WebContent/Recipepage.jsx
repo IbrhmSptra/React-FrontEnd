@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import RecipePageCard from "../components/Header/ImageHeader";
-import Footer from "../layouts/PageLayouts/Footer";
-import Navbar from "../layouts/PageLayouts/Navbar";
-import RecipeDescription from "../components/RecipeDescription";
-import RecipeIngridients from "../components/RecipeIngridients";
-import CookingMethod from "../components/CookingMethode";
-import IngridientsButtonOrder from "../components/Button/IngridientsButtonOrder";
-import RatingFood from "../components/RatingFood";
-import Sidebar from "../layouts/PageLayouts/Sidebar";
+import RecipePageCard from "../../components/Header/ImageHeader";
+import Footer from "../../layouts/PageLayouts/Footer";
+import Navbar from "../../layouts/PageLayouts/Navbar";
+import RecipeDescription from "../../layouts/Content/RecipeDescription";
+import RecipeIngridients from "../../layouts/Content/RecipeIngridients";
+import CookingMethod from "../../layouts/Content/CookingMethode";
+import IngridientsButtonOrder from "../../components/Button/IngridientsButtonOrder";
+import RatingFood from "../../layouts/Content/RatingFood";
+import Sidebar from "../../layouts/PageLayouts/Sidebar";
 import { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
-import { fetchGet } from "../services/axios.service";
-import SkeletonBannerDetail from "../layouts/Skeleton/SkeletonRecipePage";
+import { fetchGet } from "../../services/axios.service";
+import SkeletonBannerDetail from "../../layouts/Skeleton/SkeletonRecipePage";
 
 const Recipepage = () => {
   const { id } = useParams();

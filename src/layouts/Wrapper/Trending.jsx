@@ -1,13 +1,13 @@
-import CardFood from "../components/Card/CardFood";
+import CardFood from "../../components/Card/CardFood";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import { Navigation } from "swiper/modules";
-import ArrowButton from "../components/Button/ArrowButton";
+import ArrowButton from "../../components/Button/ArrowButton";
 import useSWR from "swr";
-import SkeletonTrending from "./Skeleton/SkeletonTrending";
-import { fetchGet } from "../services/axios.service";
+import SkeletonTrending from "../Skeleton/SkeletonTrending";
+import { fetchGet } from "../../services/axios.service";
 
 const Trending = () => {
   const API_URL = import.meta.env.VITE_API_URL;

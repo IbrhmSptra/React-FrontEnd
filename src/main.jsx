@@ -1,19 +1,19 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
+import HomePage from "./pages/WebContent/HomePage.jsx";
 import { Provider } from "react-redux";
 import Store from "./redux/store.js";
-import DetailTransaksi from "./pages/DetailTransaksiPage.jsx";
-import Recipepage from "./pages/Recipepage.jsx";
-import FavoritePage from "./pages/FavoritePage.jsx";
-import KategoriPage from "./pages/KategoriPage.jsx";
-import DetailPemesanan from "./pages/SummaryOrderPage.jsx";
+import DetailTransaksi from "./pages/WebContent/DetailTransaksiPage.jsx";
+import Recipepage from "./pages/WebContent/Recipepage.jsx";
+import FavoritePage from "./pages/WebContent/FavoritePage.jsx";
+import KategoriPage from "./pages/WebContent/KategoriPage.jsx";
+import DetailPemesanan from "./pages/WebContent/SummaryOrderPage.jsx";
 import ProtectedRoute from "./pages/Middleware/ProtectedRoute.jsx";
 import ProtectedAuth from "./pages/Middleware/ProtectedAuth.jsx";
-import RiwayatPage from "./pages/RiwayatPage.jsx";
+import RiwayatPage from "./pages/WebContent/RiwayatPage.jsx";
 import axios from "axios";
-import AuthenticationPage from "./pages/AuthenthicationPage.jsx";
+import AuthenticationPage from "./pages/WebContent/AuthenthicationPage.jsx";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(

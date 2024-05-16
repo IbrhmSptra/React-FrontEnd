@@ -1,7 +1,7 @@
-import LocationInput from "../components/Input/LocationInput";
-import OrderList from "../components/OrderList";
-import RingkasanTransaksi from "../components/RingkasanTransaksi";
-import ButtonPemesanan from "../components/Button/ButtonPemesanan";
+import LocationInput from "../../components/Input/LocationInput";
+import OrderList from "../Content/OrderList";
+import RingkasanTransaksi from "../Content/RingkasanTransaksi";
+import ButtonPemesanan from "../../components/Button/ButtonPemesanan";
 
 const DetailPemesanan = ({ data }) => {
   return (

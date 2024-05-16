@@ -1,5 +1,5 @@
 import Brand from "../../components/Icon/Brand";
-import Tagline from "../../components/Tagline";
+import Tagline from "../../components/Header/Tagline";
 import StartButton from "../../components/Button/StartButton";
 import Background from "../../assets/img/background.webp";
 
