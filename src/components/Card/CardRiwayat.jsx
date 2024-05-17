@@ -14,7 +14,7 @@ const CardRiwayat = ({ data, refreshRiwayat }) => {
   return (
     <div
       onClick={() => navigate(`/detailtransaksi/${data.id}`)}
-      className="flex border shadow-xl rounded-xl overflow-hidden"
+      className="flex border shadow-xl rounded-xl overflow-hidden cursor-pointer"
     >
       <img
         className="w-1/2 min-w-44 max-h-36 object-cover"
