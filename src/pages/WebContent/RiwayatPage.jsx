@@ -4,7 +4,7 @@ import Navbar from "../../layouts/PageLayouts/Navbar";
 import Sidebar from "../../layouts/PageLayouts/Sidebar";
 import Filter from "../../components/Input/Filter";
 import Banner from "../../components/Header/HeaderBanner";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import banner from "../../assets/img/Banner/Background-2.webp";
 import CardRiwayat from "../../components/Card/CardRiwayat";
 import Pagination from "../../components/Input/Pagination";
@@ -39,13 +39,21 @@ const RiwayatPage = () => {
   };
 
   //fetch api
-  const { data, error, isLoading } = useSWR(
+  const {
+    data,
+    error,
+    isLoading,
+    mutate: refresh,
+  } = useSWR(
     `${API_URL}/api/order?page=${page}${sortMethods[selectedFilter]}`,
     fetchGet
   );
   if (error) {
     console.error("Fetch Error :", error?.response.data.message);
   }
+  useEffect(() => {
+    refresh();
+  }, []);
 
   return (
     <div className="font-poppins">
@@ -76,7 +84,13 @@ const RiwayatPage = () => {
           <div className="space-y-4 mt-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-4">
             {data ? (
               data.data.map((value, index) => {
-                return <CardRiwayat data={value} key={index} />;
+                return (
+                  <CardRiwayat
+                    data={value}
+                    key={index}
+                    refreshRiwayat={refresh}
+                  />
+                );
               })
             ) : (
               <h1 className="text-center text-headline w-full py-20">

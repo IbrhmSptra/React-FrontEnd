@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FeatureRating from "../Input/FeatureRating";
 
-const CardRiwayat = ({ data }) => {
+const CardRiwayat = ({ data, refreshRiwayat }) => {
+  const navigate = useNavigate();
   let options = {
     weekday: "long",
     year: "numeric",
@@ -9,11 +10,10 @@ const CardRiwayat = ({ data }) => {
     day: "numeric",
   };
   let date = new Date(data.date);
-
   let formattedDate = date.toLocaleDateString("id-ID", options);
   return (
-    <Link
-      to={`/detailtransaksi/${data.id}`}
+    <div
+      onClick={() => navigate(`/detailtransaksi/${data.id}`)}
       className="flex border shadow-xl rounded-xl overflow-hidden"
     >
       <img
@@ -36,10 +36,14 @@ const CardRiwayat = ({ data }) => {
 
         <div className="flex">
           <p className="text-xs text-grayText translate-y-0.5 mr-1">Ulas :</p>
-          <FeatureRating />
+          <FeatureRating
+            id={data.id}
+            rated={data.rating}
+            refreshRiwayat={refreshRiwayat}
+          />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

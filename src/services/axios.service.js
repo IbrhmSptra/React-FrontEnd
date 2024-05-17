@@ -8,3 +8,6 @@ export const fetchGet = (url) => axios.get(url).then((res) => res.data);
 
 export const fetchPostOrder = ({ url, alamat }) =>
   axios.post(url, { location: alamat }).then((res) => res.data);
+
+export const fetchRating = ({ url, rating }) =>
+  axios.patch(url, { rating: rating }).then((res) => res.data);
