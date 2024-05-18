@@ -61,8 +61,8 @@ const Card = ({ data, refresh }) => {
         <img className="w-full max-h-36 object-cover" src={data.image} />
         <div className="p-4 space-y-2">
           <p className="text-sm text-headline font-medium">{data.name}</p>
-          <div className="flex justify-between">
-            <div className="flex">
+          <div className="flex justify-between flex-col gap-y-2 sm:flex-row sm:gap-y-0">
+            <div className="flex order-2">
               <FaStar color={data.rating >= 1 ? "#feda15" : "#6F6F6F"} />
               <FaStar
                 color={
