@@ -61,29 +61,16 @@ const Card = ({ data, refresh }) => {
         <img className="w-full max-h-36 object-cover" src={data.image} />
         <div className="p-4 space-y-2">
           <p className="text-sm text-headline font-medium">{data.name}</p>
-          <div className="flex justify-between">
-            <div className="flex">
-              <FaStar color={data.rating >= 1 ? "#feda15" : "#6F6F6F"} />
-              <FaStar
-                color={
-                  data.rating > 0 && data.rating >= 2 ? "#feda15" : "#6F6F6F"
-                }
-              />
-              <FaStar
-                color={
-                  data.rating > 0 && data.rating >= 3 ? "#feda15" : "#6F6F6F"
-                }
-              />
-              <FaStar
-                color={
-                  data.rating > 0 && data.rating >= 4 ? "#feda15" : "#6F6F6F"
-                }
-              />
-              <FaStar
-                color={
-                  data.rating > 0 && data.rating == 5 ? "#feda15" : "#6F6F6F"
-                }
-              />
+          <div className="flex justify-between flex-col gap-y-2 sm:flex-row sm:gap-y-0">
+            <div className="flex order-2">
+              {[...Array(5)].map((val, i) => {
+                return (
+                  <FaStar
+                    key={i}
+                    color={data.rating >= i + 1 ? "#feda15" : "#6F6F6F"}
+                  />
+                );
+              })}
               <p className="text-grayText text-xs font-light translate-y-0.5 ml-1">
                 {`(${data.order})`}
               </p>

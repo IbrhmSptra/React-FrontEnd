@@ -36,11 +36,7 @@ const CardRiwayat = ({ data, refreshRiwayat }) => {
 
         <div className="flex">
           <p className="text-xs text-grayText translate-y-0.5 mr-1">Ulas :</p>
-          <FeatureRating
-            id={data.id}
-            rated={data.rating}
-            refreshRiwayat={refreshRiwayat}
-          />
+          <FeatureRating id={data.id} refreshRiwayat={refreshRiwayat} />
         </div>
       </div>
     </div>

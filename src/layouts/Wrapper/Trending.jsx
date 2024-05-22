@@ -12,7 +12,7 @@ import { fetchGet } from "../../services/axios.service";
 const Trending = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const { data, error, isLoading } = useSWR(
-    `${API_URL}/api/food/random?limit=10`,
+    `${API_URL}/api/food?page=1&order=desc`,
     fetchGet,
     {
       revalidateOnFocus: false,
