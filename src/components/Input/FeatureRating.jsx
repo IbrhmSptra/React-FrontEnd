@@ -2,10 +2,15 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
+import useSWR from "swr";
+import { fetchGet } from "../../services/axios.service";
 
-const FeatureRating = ({ id, rated, refreshRiwayat }) => {
+const FeatureRating = ({ id, refreshRiwayat }) => {
   const API_URL = import.meta.env.VITE_API_URL;
-  const [rating, setRating] = useState(rated);
+  const { data, error } = useSWR(`${API_URL}/api/order/${id}`, fetchGet);
+  if (error) {
+    console.error("Fetch Error :", error?.response.data.message);
+  }
   const [hover, setHover] = useState(null);
 
   const handleHover = (e, currentRating) => {
@@ -28,7 +33,7 @@ const FeatureRating = ({ id, rated, refreshRiwayat }) => {
             onClick={async (e) => {
               e.preventDefault();
               e.stopPropagation();
-              setRating(currentRating);
+              data.data.rating = currentRating;
               await axios.patch(`${API_URL}/api/order/rating/${id}`, {
                 rating: currentRating,
               });
@@ -43,7 +48,11 @@ const FeatureRating = ({ id, rated, refreshRiwayat }) => {
             <FaStar
               size={15}
               className="cursor-pointer"
-              color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+              color={
+                currentRating <= (hover || data?.data.rating)
+                  ? "#ffc107"
+                  : "#e4e5e9"
+              }
             />
           </div>
         );

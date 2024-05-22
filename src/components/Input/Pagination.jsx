@@ -8,6 +8,7 @@ const Pagination = ({ setPage, totalPage }) => {
             className="mx-1 px-3 py-2 rounded-full bg-white shadow-xl font-semibold"
             onClick={() => {
               setPage(index + 1);
+              window.scrollTo(0, 300);
             }}
           >
             {index + 1}
